@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Yu-Siang Wang</title>
+    <link>https://Yusics.github.io/publication/</link>
+    <description>Recent content in Publications on Yu-Siang Wang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Your Name</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/publication/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Scene Graph Parsing as Dependency Parsing</title>
+      <link>https://Yusics.github.io/publication/sgparser/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yusics.github.io/publication/sgparser/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Adversarial attack beyond image space</title>
+      <link>https://Yusics.github.io/publication/adversarial/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yusics.github.io/publication/adversarial/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Novel Chest Compression Depth Estimation Algorithm Based on a Smartwatch for High-Quality Cardiopulmonary Resuscitation</title>
+      <link>https://Yusics.github.io/publication/cpr/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yusics.github.io/publication/cpr/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Leveraging Linguistic Structures for Named Entity Recognition with Bidirectional Recursive Neural Networks</title>
+      <link>https://Yusics.github.io/publication/brnn_ner/</link>
+      <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://Yusics.github.io/publication/brnn_ner/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
