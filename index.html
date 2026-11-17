@@ -69,6 +69,13 @@
   .entry { margin:0 0 12px; font-size:14.5px; }
   .entry span { color:var(--muted); }
   .bio-education { margin-top:22px; }
+  /* Interactive academic map: embedded only in the final main-column section. */
+  .footprint-intro { color:var(--muted); font-size:14px; margin:0 0 14px; }
+  .footprint-frame { display:block; width:100%; height:930px; border:1px solid var(--border); border-radius:12px; background:#fff; }
+  .footprint-more { font-size:13.5px; margin:11px 0 0; }
+  .footprint-more a { font-weight:600; }
+  @media(max-width:830px) { .footprint-frame { height:985px; } }
+  @media(max-width:520px) { .footprint-frame { height:1020px; } }
   footer { color:#82909a; font-size:12px; border-top:1px solid var(--border); padding-top:17px; margin-top:46px; }
   @media(max-width:830px) { .layout { padding:34px 24px 35px; gap:32px; grid-template-columns:1fr; }
     .sidebar { position:static; display:grid; grid-template-columns:94px minmax(0,1fr); column-gap:22px; }
@@ -119,6 +126,7 @@
       <a href="#publications">Publications</a>
       <a href="#teaching">Teaching</a>
       <a href="#service">Academic Service</a>
+      <a href="#footprint">Academic Footprint</a>
     </nav>
   </aside>
   <main id="main-content">
@@ -300,6 +308,13 @@
       <p>ACL Rolling Review (December 2024; February, May, and October 2025; January 2026); *SEM 2025 and 2026; LREC 2026; COLING 2025; LREC-COLING 2024.</p>
       <h3 class="subsection-heading">Reviewing</h3>
       <p>ACL Rolling Review (2021–2026); ACL, EMNLP, NAACL, EACL; LRE (2025); LAW (2023, 2024, 2026); VarDial (2026); LeWiDi (2025); NLP4Sustain (2025); CoMeDi (2024); WiNLP (2019–2022); student research workshops.</p>
+    </section>
+
+    <section id="footprint" aria-labelledby="footprint-heading">
+      <h2 id="footprint-heading">Academic Footprint</h2>
+      <p class="footprint-intro">An interactive map of my education, employment, and conference-related locations. Select a city or filter by category and year to explore.</p>
+      <iframe class="footprint-frame" src="map.html?embed=1" title="Interactive Academic Footprint world map" loading="lazy"></iframe>
+      <p class="footprint-more"><a href="map.html" target="_blank" rel="noopener noreferrer">Explore the full interactive map ↗</a></p>
     </section>
 
     <footer>© 2026 Siyao (Logan) Peng · Last updated November 2026 · Hosted on GitHub Pages</footer>

@@ -1,0 +1,52 @@
+﻿type,start,end,place,country,title,detail,status,tag,url
+education,2011,2015,Berkeley,United States,"University of California, Berkeley","B.A. in Applied Mathematics, French & Linguistics",onsite,B.A.,https://www.berkeley.edu/
+education,2015,2016,Leiden,Netherlands,Leiden University,M.A. in Linguistics,onsite,M.A.,https://www.universiteitleiden.nl/en
+education,2016,2017,Stony Brook,United States,Stony Brook University,Doctoral studies in Linguistics (before transferring to Georgetown),onsite,Graduate study,https://www.stonybrook.edu/
+education,2017,2023,"Washington, DC",United States,Georgetown University,Ph.D. in Linguistics · dissertation on cross-paragraph discourse structure,onsite,Ph.D.,https://www.georgetown.edu/
+employment,2023,2026,Munich,Germany,LMU Munich · MaiNLP Lab,Postdoctoral Researcher · April 2023–March 2026,onsite,Postdoc,https://mainlp.github.io/
+employment,2019,2019,Boulder,United States,Pearson · Educational Applications Group,Research internship · June–August 2019,onsite,Internship,
+employment,2020,2020,Beijing,China,Tencent · AI Data Center,Internship · May–September 2020,onsite,Internship,
+employment,2021,2021,Beijing,China,Baidu · PaddlePaddle Deep Learning Group,Internship · January–June 2021,onsite,Internship,
+conference,2026,2026,Budapest,Hungary,Disagreeing Rationales: Rethinking Classification and Explainability Evaluation in Hate Speech Detection,Publication · Findings of EMNLP 2026,onsite,EMNLP 2026,https://aclanthology.org/2026.findings-emnlp.266/
+conference,2026,2026,San Diego,United States,EVADE: LLM-Based Explanation Generation and Validation for Error Detection in NLI,Publication · Findings of ACL 2026,onsite,ACL 2026,https://aclanthology.org/2026.findings-acl.65/
+conference,2026,2026,San Diego,United States,"Agree, Disagree, Explain: Decomposing Human Label Variation in NLI through the Lens of Explanations",Publication · Findings of ACL 2026,onsite,ACL 2026,https://aclanthology.org/2026.findings-acl.1342/
+conference,2026,2026,Palma de Mallorca,Spain,Information Asymmetry across Language Varieties: A Case Study on Cantonese-Mandarin and Bavarian-German QA,Publication · LREC 2026,onsite,LREC 2026,https://aclanthology.org/2026.lrec-1.100/
+conference,2025,2025,Suzhou,China,LiTEx: A Linguistic Taxonomy of Explanations for Understanding Within-Label Variation in Natural Language Inference SAC Highlight Award,Publication · EMNLP 2025,onsite,EMNLP 2025,https://aclanthology.org/2025.emnlp-main.1728/
+conference,2025,2025,Suzhou,China,What Media Frames Reveal About Stance: A Dataset and Study about Memes in Climate Change Discourse,Publication · Findings of EMNLP 2025,onsite,EMNLP 2025,https://aclanthology.org/2025.findings-emnlp.286/
+conference,2025,2025,Suzhou,China,LeWiDi-2025 at NLPerspectives: Third Edition of the Learning with Disagreements Shared Task,Publication · NLPerspectives Workshop (EMNLP 2025),onsite,NLPerspectives · EMNLP 2025,https://aclanthology.org/2025.nlperspectives-1.16/
+conference,2025,2025,Suzhou,China,BoN Appetit Team at LeWiDi-2025: Best-of-N Test-time Scaling Can Not Stomach Annotation Disagreements (Yet),Publication · NLPerspectives Workshop (EMNLP 2025),onsite,NLPerspectives · EMNLP 2025,https://aclanthology.org/2025.nlperspectives-1.14/
+conference,2025,2025,Hanoi,Vietnam,References Matter: Investigating the Impact of Reference Set Variation on Summarization Evaluation,Publication · INLG 2025,onsite,INLG 2025,https://aclanthology.org/2025.inlg-main.18/
+conference,2025,2025,Vienna,Austria,A Rose by Any Other Name: LLM-Generated Explanations Are Good Proxies for Human Explanations to Collect Label Distributions on NLI,Publication · Findings of ACL 2025,onsite,ACL 2025,https://aclanthology.org/2025.findings-acl.562/
+conference,2024,2024,Miami,United States,MultiClimate: Multimodal Stance Detection on Climate Change Videos,Publication · NLP4PI Workshop (EMNLP 2024),onsite,NLP4PI · EMNLP 2024,https://aclanthology.org/2024.nlp4pi-1.27/
+conference,2024,2024,Miami,United States,“Seeing the Big through the Small”: Can LLMs Approximate Human Judgment Distributions on NLI from a Few Explanations?,Publication · Findings of EMNLP 2024,onsite,EMNLP 2024,https://aclanthology.org/2024.findings-emnlp.842/
+conference,2024,2024,Bangkok,Thailand,VariErr NLI: Separating Annotation Error from Human Label Variation SAC Award: Resources and Evaluation,Publication · ACL 2024,onsite,ACL 2024,https://aclanthology.org/2024.acl-long.123/
+conference,2024,2024,Bangkok,Thailand,CLIMATELI: Evaluating Entity Linking on Climate Change Data,Publication · ClimateNLP Workshop (ACL 2024),onsite,ClimateNLP · ACL 2024,https://aclanthology.org/2024.climatenlp-1.16/
+conference,2024,2024,Turin,Italy,"Sebastian, Basti, Wastl?! Recognizing Named Entities in Bavarian Dialectal Data",Publication · LREC-COLING 2024,onsite,LREC-COLING 2024,https://aclanthology.org/2024.lrec-main.1262/
+conference,2024,2024,Turin,Italy,SPLICE: A Singleton-Enhanced PipeLIne for Coreference REsolution,Publication · LREC-COLING 2024,onsite,LREC-COLING 2024,https://aclanthology.org/2024.lrec-main.1321/
+conference,2024,2024,Turin,Italy,MaiBaam: A Multi-Dialectal Bavarian Universal Dependency Treebank,Publication · LREC-COLING 2024,onsite,LREC-COLING 2024,https://aclanthology.org/2024.lrec-main.953/
+conference,2024,2024,St. Julian's,Malta,Different Tastes of Entities: Investigating Human Label Variation in Named Entity Annotations,Publication · Unimplicit Workshop (EACL 2024),onsite,Unimplicit · EACL 2024,https://aclanthology.org/2024.unimplicit-1.7/
+conference,2024,2024,St. Julian's,Malta,EEVEE: An Easy Annotation Tool for Natural Language Processing,Publication · LAW Workshop (EACL 2024),onsite,LAW · EACL 2024,https://aclanthology.org/2024.law-1.20/
+conference,2023,2023,"Nusa Dua, Bali",Indonesia,Incorporating Singletons and Mention-based Features in Coreference Resolution via Multi-task Learning for Better Generalization,Publication · IJCNLP-AACL 2023,onsite,IJCNLP-AACL 2023,https://aclanthology.org/2023.ijcnlp-short.14/
+conference,2023,2023,Toronto,Canada,GENTLE: A Genre-Diverse Multilayer Challenge Set for English NLP and Linguistic Evaluation,Publication · LAW Workshop (ACL 2023),onsite,LAW · ACL 2023,https://aclanthology.org/2023.law-1.17/
+conference,2022,2022,Taipei,Taiwan,GCDT: A Chinese RST Treebank for Multigenre and Multilingual Discourse Parsing,Publication · AACL-IJCNLP 2022,virtual-host,AACL-IJCNLP 2022,https://aclanthology.org/2022.aacl-short.47/
+conference,2021,2021,Punta Cana,Dominican Republic,"DisCoDisCo at the DISRPT2021 Shared Task: A System for Discourse Segmentation, Classification, and Connective Detection",Publication · DISRPT Shared Task (EMNLP 2021),hybrid,DISRPT · EMNLP 2021,https://aclanthology.org/2021.disrpt-1.6/
+conference,2021,2021,,,Overview of AMALGUM – Large Silver Quality Annotations across English Genres,Publication · SCiL 2021 · online-only event (no physical city pin),virtual,SCiL 2021,https://aclanthology.org/2021.scil-1.52/
+conference,2020,2020,,,Tencent Submission for WMT20 Quality Estimation Shared Task,Publication · WMT 2020 · online-only event (no physical city pin),virtual,WMT 2020,https://www.statmt.org/wmt20/pdf/2020.wmt-1.124.pdf
+conference,2020,2020,Barcelona,Spain,PASTRIE: A Corpus of Prepositions Annotated with Supersense Tags in Reddit International English,Publication · LAW Workshop (COLING 2020),virtual-host,LAW · COLING 2020,https://aclanthology.org/2020.law-1.10/
+conference,2020,2020,Marseille,France,A Corpus of Adpositional Supersenses for Mandarin Chinese,Publication · LREC 2020,cancelled,LREC 2020,https://aclanthology.org/2020.lrec-1.733/
+conference,2020,2020,Marseille,France,"AMALGUM – A Free, Balanced, Multilayer English Web Corpus",Publication · LREC 2020,cancelled,LREC 2020,https://aclanthology.org/2020.lrec-1.648/
+conference,2019,2019,Beijing,China,Modeling Long-Range Context for Concurrent Dialogue Acts Recognition,Publication · CIKM 2019,onsite,CIKM 2019,https://doi.org/10.1145/3357384.3358145
+conference,2019,2019,Minneapolis,United States,GumDrop at the DISRPT2019 Shared Task: A Model Stacking Approach to Discourse Unit Segmentation and Connective Detection,Publication · DISRPT Workshop (NAACL 2019),onsite,DISRPT · NAACL 2019,https://aclanthology.org/W19-2717/
+conference,2018,2018,Santa Fe,United States,All Roads Lead to UD: Converting Stanford and Penn Parses to English Universal Dependencies with Multilayer Annotations,Publication · LAW-MWE-CxG Workshop (COLING 2018),onsite,LAW-MWE-CxG · COLING 2018,https://aclanthology.org/W18-4918/
+conference,2026,2026,Budapest,Hungary,PANDORA 2026 · Co-Organizer,1st Pluralistic AI & NLP Workshop · EMNLP 2026,onsite,Organization,https://2026.emnlp.org/
+conference,2025,2025,Suzhou,China,LeWiDi 2025 · Co-Organizer,Learning With Disagreements Shared Task · NLPerspectives / EMNLP 2025,onsite,Organization,https://2025.emnlp.org/
+conference,2025,2025,Vienna,Austria,LAW XIX · Co-Chair,19th Linguistic Annotation Workshop · ACL 2025,onsite,Organization,https://2025.aclweb.org/
+conference,2025,2025,Suzhou,China,*SEM 2025 · Area Chair,Co-located with EMNLP 2025,onsite,Area Chair,https://starsem2025.github.io/
+conference,2026,2026,San Diego,United States,*SEM 2026 · Area Chair,Co-located with ACL 2026,onsite,Area Chair,https://starsem2026.github.io/
+conference,2026,2026,Palma de Mallorca,Spain,LREC 2026 · Area Chair,Language Resources and Evaluation Conference,onsite,Area Chair,https://lrec2026.info/
+conference,2025,2025,Abu Dhabi,United Arab Emirates,COLING 2025 · Area Chair,31st International Conference on Computational Linguistics,onsite,Area Chair,https://coling2025.org/
+conference,2024,2024,Turin,Italy,LREC-COLING 2024 · Area Chair,Joint LREC-COLING conference,onsite,Area Chair,https://lrec-coling-2024.org/
+conference,2026,2026,San Diego,United States,LAW XX 2026 · Reviewer,20th Linguistic Annotation Workshop · ACL 2026,onsite,Reviewing,https://sigann.github.io/LAW-XX-2026/
+conference,2026,2026,Rabat,Morocco,VarDial 2026 · Reviewer,Workshop co-located with EACL 2026,onsite,Reviewing,https://sites.google.com/view/vardial-2026
+conference,2025,2025,Hildesheim,Germany,NLP4Sustain 2025 · Reviewer,Workshop co-located with KONVENS 2025,onsite,Reviewing,https://nlp4sustain.github.io/
+conference,2024,2025,Abu Dhabi,United Arab Emirates,CoMeDi · Reviewer (2024),Shared-task reviewing · associated workshop at COLING 2025,onsite,Reviewing,https://comedinlp.github.io/
