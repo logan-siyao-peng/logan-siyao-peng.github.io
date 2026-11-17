@@ -22,7 +22,8 @@
   a:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; border-radius:3px; }
   .layout { max-width:var(--max); margin:0 auto; padding:64px 34px 40px; display:grid; grid-template-columns:255px minmax(0,1fr); gap:74px; }
   .sidebar { align-self:start; position:sticky; top:34px; }
-  .avatar { width:116px; height:116px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:37px; font-weight:600; letter-spacing:-.08em; margin-bottom:25px; user-select:none; }
+  .avatar { position:relative; overflow:hidden; width:116px; height:116px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:37px; font-weight:600; letter-spacing:-.08em; margin-bottom:25px; user-select:none; }
+  .avatar-photo { position:absolute; inset:0; width:100%; height:100%; border-radius:50%; object-fit:cover; }
   .name { margin:0 0 2px; font-size:26px; line-height:1.25; font-weight:650; letter-spacing:-.035em; }
   .hanzi { color:var(--muted); font-size:15px; margin:3px 0 17px; }
   .role { color:#465a6d; font-size:14px; line-height:1.5; margin:0 0 8px; }
@@ -41,13 +42,6 @@
   p { margin:0 0 13px; }
   .lead { font-size:18px; line-height:1.66; color:#30465b; margin-bottom:18px; }
   .small { color:var(--muted); font-size:14px; }
-  .research-area { margin:0 0 24px; }
-  .research-area h3 { margin-top:0; }
-  .research-area p { margin-bottom:7px; }
-  .research-papers { color:var(--muted); font-size:13px; }
-  .research-papers a { white-space:nowrap; }
-  .highlights { border-left:3px solid #c6d9e8; padding:3px 0 3px 16px; margin:18px 0 0; font-size:14px; }
-  .highlights p { margin:3px 0; }
   .section-note { color:var(--muted); font-size:13px; margin-bottom:15px; }
   .pub-jumps { display:flex; flex-wrap:wrap; gap:5px 12px; font-size:13px; margin-bottom:24px; }
   .year-block { margin-top:24px; }
@@ -92,8 +86,8 @@
 <body>
 <div class="layout">
   <aside class="sidebar" aria-label="Profile and site navigation">
-    <!-- Monogram placeholder: replace with your existing portrait image if desired. -->
-    <div class="avatar" aria-hidden="true">SP</div>
+    <!-- Add your portrait as img/profile.jpg; the initials appear if no photo is available. -->
+    <div class="avatar"><span aria-hidden="true">SP</span><img class="avatar-photo" src="img/portrait_logan_1.jpg" alt="Portrait of Siyao Peng" onerror="this.remove()"></div>
     <h1 class="name">Siyao (Logan) Peng</h1>
     <p class="hanzi" lang="zh">彭思尧</p>
     <p class="role">Computational Linguist<br>NLP · Language Understanding · Trustworthy AI</p>
@@ -103,15 +97,16 @@
       <a href="https://scholar.google.com/citations?user=RlfQr2wAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
       <a href="https://github.com/logan-siyao-peng" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/logan-siyao-peng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="downloads/PengSiyao_CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+      <a href="downloads/Peng-CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+      <!-- Upload your latest resume as downloads/PengSiyao_Resume.pdf before publishing. -->
+      <a href="downloads/Siyao_Peng_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
     </div>
     <nav class="site-nav" aria-label="Sections">
       <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#teaching">Teaching &amp; Mentoring</a>
-      <a href="#service">Academic Service</a>
       <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#service">Academic Service</a>
     </nav>
   </aside>
   <main id="main-content">
@@ -119,29 +114,15 @@
       <h2 id="about-heading">About Me</h2>
       <p class="lead">My research examines how context and differences in human interpretation affect language understanding and the evaluation of language technologies.</p>
       <p>I work at the intersection of computational linguistics, NLP, and trustworthy AI. My research draws on linguistic analysis and human judgments to study variation in language data, explanation-based evaluation methods, and access to information across languages and regional varieties.</p>
-      <p>From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I worked on discourse structure and multilingual language resources under the guidance of Amir Zeldes, Nathan Schneider, and Nianwen Xue.</p>
-      <div class="highlights" aria-label="Research distinctions">
-        <p><strong>Research awards:</strong> ACL 2024 SAC Award (Resources and Evaluation) for <a href="https://aclanthology.org/2024.acl-long.123/">VariErr NLI</a>; EMNLP 2025 SAC Highlight Award for <a href="https://aclanthology.org/2025.emnlp-main.1728/">LiTEx</a>.</p>
-      </div>
+      <p>From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I worked on discourse structure and multilingual language resources under the guidance of <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a>, <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>, and Nianwen Xue.</p>
     </section>
 
-    <section id="research" aria-labelledby="research-heading">
-      <h2 id="research-heading">Research</h2>
-      <div class="research-area">
-        <h3>Human Interpretation and Reliable NLP Evaluation</h3>
-        <p>Human judgments often differ for reasons that cannot be reduced to annotation errors. My recent work studies these differences through linguistic explanations and develops methods for distinguishing plausible variation from errors in NLP data. I also examine how evaluation changes with choices such as reference summaries, annotation practices, and the use of LLM-generated explanations.</p>
-        <div class="research-papers">Related work: <a href="https://aclanthology.org/2024.acl-long.123/">VariErr</a> · <a href="https://aclanthology.org/2025.emnlp-main.1728/">LiTEx</a> · <a href="https://aclanthology.org/2026.findings-acl.65/">EVADE</a> · <a href="https://aclanthology.org/2025.inlg-main.18/">References Matter</a></div>
-      </div>
-      <div class="research-area">
-        <h3>Context, Discourse, and Language Diversity</h3>
-        <p>My research in discourse structure, semantic annotation, and multilingual NLP explores how linguistic meaning depends on broader context. Building on work on Chinese and English discourse resources, I investigate how language varieties and uneven representation in language technologies shape access to information and the reliability of LLM-generated answers.</p>
-        <div class="research-papers">Related work: <a href="https://aclanthology.org/2022.aacl-short.47/">GCDT</a> · <a href="https://aclanthology.org/2025.cl-1.3/">eRST</a> · <a href="https://aclanthology.org/2026.lrec-1.100/">Information Asymmetry</a></div>
-      </div>
-      <div class="research-area">
-        <h3>Language Technologies for Public Communication</h3>
-        <p>In interdisciplinary collaborations, I have studied the use of NLP for analyzing climate change discourse, including stance, framing, entity linking, and multimodal social media content. This work connects language analysis with questions about how information is presented and understood in public communication.</p>
-        <div class="research-papers">Related work: <a href="https://aclanthology.org/2025.findings-emnlp.286/">Climate Memes</a> · <a href="https://aclanthology.org/2024.nlp4pi-1.27/">MultiClimate</a> · <a href="https://aclanthology.org/2024.climatenlp-1.16/">CLIMATELI</a></div>
-      </div>
+
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <p class="entry"><strong>Ph.D. in Linguistics</strong> · Georgetown University, USA <span>· 2017–2023</span><br><span>Dissertation: Cross-Paragraph Discourse Structure in Rhetorical Structure Theory Parsing and Treebanking for Chinese and English.</span></p>
+      <p class="entry"><strong>M.A. in Linguistics</strong> · Leiden University, the Netherlands <span>· 2015–2016</span></p>
+      <p class="entry"><strong>B.A. in Applied Mathematics, French &amp; Linguistics</strong> · University of California, Berkeley, USA <span>· 2011–2015</span></p>
     </section>
 
     <section id="publications" aria-labelledby="pub-heading">
@@ -274,7 +255,7 @@
     </section>
 
     <section id="teaching" aria-labelledby="teaching-heading">
-      <h2 id="teaching-heading">Teaching &amp; Mentoring</h2>
+      <h2 id="teaching-heading">Teaching</h2>
       <h3 class="subsection-heading">Instructor · LMU Munich (2023–2026)</h3>
       <div class="teach-row"><div><strong>Introduction to Natural Language Processing</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
       <div class="teach-row"><div><strong>Trustworthy Data-Centric AI</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2024–25, 2025–26</div></div>
@@ -286,19 +267,15 @@
       <div class="teach-row"><div><strong>LAF II: Variation, Explanation &amp; Validation</strong> <span class="term">· Seminar</span></div><div class="term">Summer 2024</div></div>
 
       <h3 class="subsection-heading">Teaching Assistant · Georgetown University (2018–2021)</h3>
-      <p class="entry">Computational Corpus Linguistics; Introduction to Language; Analyzing Language Data with R; Statistical Machine Translation; Introduction to Natural Language Processing.</p>
-      <h3 class="subsection-heading">Teaching Assistant · Stony Brook University (2016–2017)</h3>
-      <p class="entry">Languages of the World; Language in the U.S.</p>
+      <div class="teach-row"><div><strong>LING-367: Computational Corpus Linguistics</strong></div><div class="term">Fall 2021</div></div>
+      <div class="teach-row"><div><strong>LING-001: Introduction to Language</strong></div><div class="term">Fall 2020</div></div>
+      <div class="teach-row"><div><strong>LING-469: Analyzing Language Data with R</strong></div><div class="term">Springs 2019, 2020</div></div>
+      <div class="teach-row"><div><strong>LING-462/COSC-482: Statistical Machine Translation</strong></div><div class="term">Spring 2020</div></div>
+      <div class="teach-row"><div><strong>LING-362: Introduction to Natural Language Processing</strong></div><div class="term">Fall 2018</div></div>
 
-      <h3 class="subsection-heading">Thesis Supervision</h3>
-      <ul class="item-list">
-        <li><strong>Beyond Noise: Detecting Annotation Error from Human Label Variation Using LLMs</strong> <span>· Master's thesis, Longfei Zuo · Summer 2025</span></li>
-        <li><strong>Steering the Climate Change Discourse to East Asia: A Teacher-Student Framework for Frame and Stance Alignment</strong> <span>· Master's thesis, Anna Barwig · Summer 2025</span></li>
-        <li><strong>Developing a Dependency Treebank for Bavarian Tweets</strong> <span>· Bachelor's thesis, Nataliia Kybaliuk · Winter 2024–25</span></li>
-        <li><strong>Mining for Errors in Benchmarks</strong> <span>· Master's thesis, Anna Minaeva · Summer 2024</span></li>
-        <li><strong>Multilingual Stance Detection for Climate Change</strong> <span>· Master's thesis, Liuxu Lu · Summer 2024</span></li>
-        <li><strong>Creating a POS-Tagged Corpus for Bavarian Tweets</strong> <span>· Bachelor's thesis, Arina Sen · Summer 2024</span></li>
-      </ul>
+      <h3 class="subsection-heading">Teaching Assistant · Stony Brook University (2016–2017)</h3>
+      <div class="teach-row"><div><strong>LIN-230: Languages of the World</strong></div><div class="term">Spring 2017</div></div>
+      <div class="teach-row"><div><strong>LIN-200: Language in the U.S.</strong></div><div class="term">Fall 2016</div></div>
     </section>
 
     <section id="service" aria-labelledby="service-heading">
@@ -316,12 +293,6 @@
       <p>ACL Rolling Review (2021–2026); ACL, EMNLP, NAACL, EACL; LRE (2025); LAW (2023, 2024, 2026); VarDial (2026); LeWiDi (2025); NLP4Sustain (2025); CoMeDi (2024); WiNLP (2019–2022); student research workshops.</p>
     </section>
 
-    <section id="education" aria-labelledby="education-heading">
-      <h2 id="education-heading">Education</h2>
-      <p class="entry"><strong>Ph.D. in Linguistics</strong> · Georgetown University, USA <span>· 2017–2023</span><br><span>Dissertation: Cross-Paragraph Discourse Structure in Rhetorical Structure Theory Parsing and Treebanking for Chinese and English.</span></p>
-      <p class="entry"><strong>M.A. in Linguistics</strong> · Leiden University, the Netherlands <span>· 2015–2016</span></p>
-      <p class="entry"><strong>B.A. in Applied Mathematics, French &amp; Linguistics</strong> · University of California, Berkeley, USA <span>· 2011–2015</span></p>
-    </section>
     <footer>© 2026 Siyao (Logan) Peng · Last updated November 2026 · Hosted on GitHub Pages</footer>
   </main>
 </div>
