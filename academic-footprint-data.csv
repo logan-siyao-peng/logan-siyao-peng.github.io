@@ -1,4 +1,6 @@
 ﻿type,start,end,place,country,title,detail,status,tag,url
+education,1992,2005,Xiangtan,China,Childhood & Primary School,"Birthplace and primary school years · Xiangtan, Hunan",onsite,Early years,
+education,2005,2011,Changsha,China,Middle & High School,"Middle and high school years · Changsha, Hunan",onsite,School years,
 education,2011,2015,Berkeley,United States,"University of California, Berkeley","B.A. in Applied Mathematics, French & Linguistics",onsite,B.A.,https://www.berkeley.edu/
 education,2015,2016,Leiden,Netherlands,Leiden University,M.A. in Linguistics,onsite,M.A.,https://www.universiteitleiden.nl/en
 education,2016,2017,Stony Brook,United States,Stony Brook University,Doctoral studies in Linguistics (before transferring to Georgetown),onsite,Graduate study,https://www.stonybrook.edu/
