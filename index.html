@@ -13,23 +13,24 @@
   <meta property="og:url" content="https://logan-siyao-peng.github.io/">
   <link rel="canonical" href="https://logan-siyao-peng.github.io/">
   <style>
-  :root { --ink:#263342; --muted:#647385; --blue:#23608c; --border:#e4e9ed; --pale:#f7f9fb; --gold:#8d6433; --max:1100px; }
+  :root { --ink:#263342; --muted:#647385; --blue:#23608c; --border:#e4e9ed; --pale:#f7f9fb; --gold:#8d6433; --max:1180px; }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; scroll-padding-top:28px; }
   body { margin:0; background:#fff; color:var(--ink); font:16px/1.67 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; -webkit-font-smoothing:antialiased; }
   a { color:var(--blue); text-decoration:none; }
   a:hover { color:#123b5b; text-decoration:underline; text-underline-offset:3px; }
   a:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; border-radius:3px; }
-  .layout { max-width:var(--max); margin:0 auto; padding:64px 34px 40px; display:grid; grid-template-columns:255px minmax(0,1fr); gap:74px; }
-  .sidebar { align-self:start; position:sticky; top:34px; }
-  .avatar { position:relative; overflow:hidden; width:116px; height:116px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:37px; font-weight:600; letter-spacing:-.08em; margin-bottom:25px; user-select:none; }
+  .layout { max-width:var(--max); margin:0 auto; padding:64px 34px 40px; display:grid; grid-template-columns:300px minmax(0,1fr); gap:60px; }
+  .sidebar { align-self:start; position:sticky; top:28px; }
+  .avatar { position:relative; overflow:hidden; width:176px; height:176px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:53px; font-weight:600; letter-spacing:-.08em; margin-bottom:22px; user-select:none; }
   .avatar-photo { position:absolute; inset:0; width:100%; height:100%; border-radius:50%; object-fit:cover; }
   .name { margin:0 0 2px; font-size:26px; line-height:1.25; font-weight:650; letter-spacing:-.035em; }
   .hanzi { color:var(--muted); font-size:15px; margin:3px 0 17px; }
-  .role { color:#465a6d; font-size:14px; line-height:1.5; margin:0 0 8px; }
-  .location { font-size:13px; color:var(--muted); margin:0 0 23px; }
-  .profile-links { display:flex; flex-wrap:wrap; gap:7px 9px; margin:0 0 26px; }
-  .profile-links a { font-size:13px; display:inline-flex; padding:4px 9px; color:var(--blue); background:#f0f5f9; border:1px solid #e0e9f0; border-radius:4px; }
+  .role { color:#465a6d; font-size:14px; line-height:1.6; margin:0 0 9px; }
+  .location { font-size:13px; color:var(--muted); margin:0 0 25px; }
+  .profile-links { display:flex; flex-direction:column; align-items:flex-start; gap:9px; margin:0 0 28px; }
+  .profile-link-row { display:flex; flex-wrap:nowrap; align-items:center; gap:8px; }
+  .profile-links a { font-size:13px; display:inline-flex; white-space:nowrap; padding:4px 9px; color:var(--blue); background:#f0f5f9; border:1px solid #e0e9f0; border-radius:4px; }
   .profile-links a:hover { background:#e5f0f8; text-decoration:none; }
   .site-nav { border-top:1px solid var(--border); padding-top:13px; display:flex; flex-direction:column; gap:4px; }
   .site-nav a { display:block; padding:5px 0; font-size:14px; color:#4a5c6c; }
@@ -77,6 +78,7 @@
   @media(max-width:520px) { .layout { padding:25px 17px; } .sidebar { grid-template-columns:70px minmax(0,1fr); gap:8px 14px; }
     .avatar { width:64px; height:64px; font-size:22px; } .name { font-size:22px; } .lead { font-size:16px; }
     h2 { font-size:21px; } .teach-row { display:block; } .teach-row .term { display:block; text-align:left; }
+    .profile-link-row { flex-wrap:wrap; gap:7px; } .profile-links a { padding:4px 8px; }
     .pub-list { padding-left:17px; } .pub-title { font-size:14.5px; }
   }
   @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
@@ -86,20 +88,25 @@
 <body>
 <div class="layout">
   <aside class="sidebar" aria-label="Profile and site navigation">
-    <!-- Add your portrait as img/profile.jpg; the initials appear if no photo is available. -->
+    <!-- Portrait image: img/portrait_logan_1.jpeg; initials appear if the image is unavailable. -->
     <div class="avatar"><span aria-hidden="true">SP</span><img class="avatar-photo" src="img/portrait_logan_1.jpeg" alt="Portrait of Siyao Peng" onerror="this.remove()"></div>
     <h1 class="name">Siyao (Logan) Peng</h1>
     <p class="hanzi" lang="zh">彭思尧</p>
-    <p class="role">Computational Linguist<br>NLP · Language Understanding · Trustworthy AI</p>
+    <p class="role">Computational Linguist<br>Natural Language Processing<br>Language Understanding · Trustworthy AI</p>
     <p class="location">Munich, Germany</p>
     <div class="profile-links" aria-label="External profiles and contact">
-      <a href="mailto:loganpeng1992@gmail.com">Email</a>
-      <a href="https://scholar.google.com/citations?user=RlfQr2wAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-      <a href="https://github.com/logan-siyao-peng" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/logan-siyao-peng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="downloads/Peng-CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
-      <!-- Upload your latest resume as downloads/PengSiyao_Resume.pdf before publishing. -->
-      <a href="downloads/Siyao_Peng_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+      <div class="profile-link-row">
+        <a href="mailto:loganpeng1992@gmail.com">Email</a>
+      </div>
+      <div class="profile-link-row">
+        <a href="https://scholar.google.com/citations?user=RlfQr2wAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <a href="https://github.com/logan-siyao-peng" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/logan-siyao-peng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="profile-link-row">
+        <a href="downloads/Peng-CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+        <a href="downloads/Siyao_Peng_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+      </div>
     </div>
     <nav class="site-nav" aria-label="Sections">
       <a href="#about">About</a>
@@ -114,7 +121,7 @@
       <h2 id="about-heading">About Me</h2>
       <p class="lead">My research examines how context and differences in human interpretation affect language understanding and the evaluation of language technologies.</p>
       <p>I work at the intersection of computational linguistics, NLP, and trustworthy AI. My research draws on linguistic analysis and human judgments to study variation in language data, explanation-based evaluation methods, and access to information across languages and regional varieties.</p>
-      <p>From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I worked on discourse structure and multilingual language resources under the guidance of <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a>, <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>, and Nianwen Xue.</p>
+      <p>From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I worked on discourse structure and multilingual language resources under the guidance of <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a> and <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>.</p>
     </section>
 
 
