@@ -22,17 +22,21 @@
   a:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; border-radius:3px; }
   .layout { max-width:var(--max); margin:0 auto; padding:64px 34px 40px; display:grid; grid-template-columns:300px minmax(0,1fr); gap:60px; }
   .sidebar { align-self:start; position:sticky; top:28px; }
-  .avatar { position:relative; overflow:hidden; width:176px; height:176px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:53px; font-weight:600; letter-spacing:-.08em; margin-bottom:22px; user-select:none; }
+  .avatar { position:relative; overflow:hidden; width:176px; height:176px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:53px; font-weight:600; letter-spacing:-.08em; margin:0 auto 22px; user-select:none; }
   .avatar-photo { position:absolute; inset:0; width:100%; height:100%; border-radius:50%; object-fit:cover; }
   .name { margin:0 0 2px; font-size:26px; line-height:1.25; font-weight:650; letter-spacing:-.035em; }
   .hanzi { color:var(--muted); font-size:15px; margin:3px 0 17px; }
   .role { color:#465a6d; font-size:14px; line-height:1.6; margin:0 0 9px; }
   .location { font-size:13px; color:var(--muted); margin:0 0 25px; }
+  /* Center the profile identity on desktop; keep contacts and navigation left-aligned. */
+  @media(min-width:831px) { .name, .hanzi, .role, .location { text-align:center; } }
+  /* Keep the concise About Me introduction as one natural, readable paragraph. */
+  #about .about-summary { margin:0; line-height:1.75; }
   .profile-links { display:flex; flex-direction:column; align-items:flex-start; gap:9px; margin:0 0 28px; }
   .profile-link-row { display:flex; flex-wrap:nowrap; align-items:center; gap:8px; }
   .profile-links a { font-size:13px; display:inline-flex; white-space:nowrap; padding:4px 9px; color:var(--blue); background:#f0f5f9; border:1px solid #e0e9f0; border-radius:4px; }
   .profile-links a:hover { background:#e5f0f8; text-decoration:none; }
-  .site-nav { border-top:1px solid var(--border); padding-top:13px; display:flex; flex-direction:column; gap:4px; }
+  .site-nav { border-top:1px solid var(--border); padding-top:13px; padding-left:0; display:flex; flex-direction:column; gap:4px; }
   .site-nav a { display:block; padding:5px 0; font-size:14px; color:#4a5c6c; }
   .site-nav a:hover { color:var(--blue); }
   main { min-width:0; }
@@ -92,7 +96,7 @@
     <div class="avatar"><span aria-hidden="true">SP</span><img class="avatar-photo" src="img/portrait_logan_1.jpeg" alt="Portrait of Siyao Peng" onerror="this.remove()"></div>
     <h1 class="name">Siyao (Logan) Peng</h1>
     <p class="hanzi" lang="zh">彭思尧</p>
-    <p class="role">Computational Linguist<br>Natural Language Processing<br>Language Understanding · Trustworthy AI</p>
+    <p class="role">Computational Linguist<br>Natural Language Processing<br>Language Understanding &amp; AI Evaluation</p>
     <p class="location">Munich, Germany</p>
     <div class="profile-links" aria-label="External profiles and contact">
       <div class="profile-link-row">
@@ -119,9 +123,7 @@
   <main id="main-content">
     <section id="about" aria-labelledby="about-heading">
       <h2 id="about-heading">About Me</h2>
-      <p class="lead">My research examines how context and differences in human interpretation affect language understanding and the evaluation of language technologies.</p>
-      <p>I work at the intersection of computational linguistics, NLP, and trustworthy AI. My research draws on linguistic analysis and human judgments to study variation in language data, explanation-based evaluation methods, and access to information across languages and regional varieties.</p>
-      <p>From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I worked on discourse structure and multilingual language resources under the guidance of <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a> and <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>.</p>
+      <p class="about-summary">My research examines how context and differences in human interpretation shape language understanding and the evaluation of NLP systems. Drawing on linguistic analysis and human judgments, I study variation in language data, explanation-based evaluation, and information access across languages and regional varieties. From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I studied discourse structure and multilingual language resources with <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a> and <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>.</p>
     </section>
 
 
@@ -134,7 +136,6 @@
 
     <section id="publications" aria-labelledby="pub-heading">
       <h2 id="pub-heading">Publications</h2>
-      <p class="section-note">Complete publication list from my CV, updated November 2026. Paper titles link to their publication pages. My name is highlighted in author lists.</p>
       <nav class="pub-jumps" aria-label="Jump to publication year">
         <a href="#pub-2026">2026</a><a href="#pub-2025">2025</a><a href="#pub-2024">2024</a><a href="#pub-2023">2023</a><a href="#pub-2022">2022</a><a href="#pub-2021">2021</a><a href="#pub-2020">2020</a><a href="#pub-2019">2019</a><a href="#pub-2018">2018</a>
       </nav>
