@@ -1,6 +1,5 @@
 ﻿type,start,end,place,country,title,detail,status,tag,url
-education,1992,2005,Xiangtan,China,Childhood & Primary School,"Birthplace and primary school years · Xiangtan, Hunan",onsite,Early years,
-education,2005,2011,Changsha,China,Middle & High School,"Middle and high school years · Changsha, Hunan",onsite,School years,
+education,1992,2011,Hunan,China,Hometown & Pre-university Education,Xiangtan (1992–2005): childhood and primary school; Changsha (2005–2011): middle and high school.,onsite,Hometown · School years,
 education,2011,2015,Berkeley,United States,"University of California, Berkeley","B.A. in Applied Mathematics, French & Linguistics",onsite,B.A.,https://www.berkeley.edu/
 education,2015,2016,Leiden,Netherlands,Leiden University,M.A. in Linguistics,onsite,M.A.,https://www.universiteitleiden.nl/en
 education,2016,2017,Stony Brook,United States,Stony Brook University,Doctoral studies in Linguistics (before transferring to Georgetown),onsite,Graduate study,https://www.stonybrook.edu/
@@ -30,13 +29,16 @@ conference-paper,2024,2024,St. Julian's,Malta,Different Tastes of Entities: Inve
 conference-paper,2024,2024,St. Julian's,Malta,EEVEE: An Easy Annotation Tool for Natural Language Processing,Publication · LAW Workshop (EACL 2024),onsite,LAW · EACL 2024,https://aclanthology.org/2024.law-1.20/
 conference-paper,2023,2023,"Nusa Dua, Bali",Indonesia,Incorporating Singletons and Mention-based Features in Coreference Resolution via Multi-task Learning for Better Generalization,Publication · IJCNLP-AACL 2023,onsite,IJCNLP-AACL 2023,https://aclanthology.org/2023.ijcnlp-short.14/
 conference-paper,2023,2023,Toronto,Canada,GENTLE: A Genre-Diverse Multilayer Challenge Set for English NLP and Linguistic Evaluation,Publication · LAW Workshop (ACL 2023),onsite,LAW · ACL 2023,https://aclanthology.org/2023.law-1.17/
-conference-paper,2022,2022,Taipei,Taiwan,GCDT: A Chinese RST Treebank for Multigenre and Multilingual Discourse Parsing,Publication · AACL-IJCNLP 2022,virtual-host,AACL-IJCNLP 2022,https://aclanthology.org/2022.aacl-short.47/
 conference-paper,2021,2021,Punta Cana,Dominican Republic,"DisCoDisCo at the DISRPT2021 Shared Task: A System for Discourse Segmentation, Classification, and Connective Detection",Publication · DISRPT Shared Task (EMNLP 2021),hybrid,DISRPT · EMNLP 2021,https://aclanthology.org/2021.disrpt-1.6/
-conference-paper,2021,2021,,,Overview of AMALGUM – Large Silver Quality Annotations across English Genres,Publication · SCiL 2021 · online-only event (no physical city pin),virtual,SCiL 2021,https://aclanthology.org/2021.scil-1.52/
-conference-paper,2020,2020,,,Tencent Submission for WMT20 Quality Estimation Shared Task,Publication · WMT 2020 · online-only event (no physical city pin),virtual,WMT 2020,https://www.statmt.org/wmt20/pdf/2020.wmt-1.124.pdf
-conference-paper,2020,2020,Barcelona,Spain,PASTRIE: A Corpus of Prepositions Annotated with Supersense Tags in Reddit International English,Publication · LAW Workshop (COLING 2020),virtual-host,LAW · COLING 2020,https://aclanthology.org/2020.law-1.10/
-conference-paper,2020,2020,Marseille,France,A Corpus of Adpositional Supersenses for Mandarin Chinese,Publication · LREC 2020,cancelled,LREC 2020,https://aclanthology.org/2020.lrec-1.733/
-conference-paper,2020,2020,Marseille,France,"AMALGUM – A Free, Balanced, Multilayer English Web Corpus",Publication · LREC 2020,cancelled,LREC 2020,https://aclanthology.org/2020.lrec-1.648/
 conference-paper,2019,2019,Beijing,China,Modeling Long-Range Context for Concurrent Dialogue Acts Recognition,Publication · CIKM 2019,onsite,CIKM 2019,https://doi.org/10.1145/3357384.3358145
 conference-paper,2019,2019,Minneapolis,United States,GumDrop at the DISRPT2019 Shared Task: A Model Stacking Approach to Discourse Unit Segmentation and Connective Detection,Publication · DISRPT Workshop (NAACL 2019),onsite,DISRPT · NAACL 2019,https://aclanthology.org/W19-2717/
 conference-paper,2018,2018,Santa Fe,United States,All Roads Lead to UD: Converting Stanford and Penn Parses to English Universal Dependencies with Multilayer Annotations,Publication · LAW-MWE-CxG Workshop (COLING 2018),onsite,LAW-MWE-CxG · COLING 2018,https://aclanthology.org/W18-4918/
+conference-attended,2025,2025,Suzhou,China,EMNLP 2025,EMNLP 2025 · attended,onsite,EMNLP 2025,https://2025.emnlp.org/
+conference-attended,2025,2025,Vienna,Austria,ACL 2025,ACL 2025 · attended,onsite,ACL 2025,https://2025.aclweb.org/
+conference-attended,2024,2024,Bangkok,Thailand,ACL 2024,ACL 2024 · attended,onsite,ACL 2024,https://2024.aclweb.org/
+conference-attended,2024,2024,Turin,Italy,LREC-COLING 2024,"Attended LREC-COLING 2024 in Turin, Italy.",onsite,LREC-COLING 2024,https://lrec-coling-2024.org/
+conference-attended,2024,2024,St. Julian's,Malta,EACL 2024,"EACL 2024 (St. Julian’s, Malta) · attended",onsite,EACL 2024,https://2024.eacl.org/
+conference-attended,2019,2019,Beijing,China,CIKM 2019,CIKM 2019 · attended,onsite,CIKM 2019,https://doi.org/10.1145/3357384.3358145
+conference-attended,2019,2019,Minneapolis,United States,NAACL 2019,NAACL 2019 / DISRPT workshop · attended,onsite,NAACL 2019,https://aclanthology.org/W19-2717/
+conference-attended,2018,2018,Santa Fe,United States,COLING 2018,COLING 2018 / LAW-MWE-CxG workshop · attended,onsite,COLING 2018,https://aclanthology.org/W18-4918/
+conference-attended,2022,2022,Seattle,United States,NAACL 2022,Attended in person; no associated publication.,onsite,NAACL 2022,https://2022.naacl.org/
