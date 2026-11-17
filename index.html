@@ -71,11 +71,11 @@
   .bio-education { margin-top:22px; }
   /* Interactive academic map: embedded only in the final main-column section. */
   .footprint-intro { color:var(--muted); font-size:14px; margin:0 0 14px; }
-  .footprint-frame { display:block; width:100%; height:1240px; border:1px solid var(--border); border-radius:12px; background:#fff; }
+  .footprint-frame { display:block; width:100%; height:1110px; border:1px solid var(--border); border-radius:12px; background:#fff; }
   .footprint-more { font-size:13.5px; margin:11px 0 0; }
   .footprint-more a { font-weight:600; }
-  @media(max-width:830px) { .footprint-frame { height:1300px; } }
-  @media(max-width:520px) { .footprint-frame { height:1640px; } }
+  @media(max-width:830px) { .footprint-frame { height:1130px; } }
+  @media(max-width:520px) { .footprint-frame { height:1440px; } }
   footer { color:#82909a; font-size:12px; border-top:1px solid var(--border); padding-top:17px; margin-top:46px; }
   @media(max-width:830px) { .layout { padding:34px 24px 35px; gap:32px; grid-template-columns:1fr; }
     .sidebar { position:static; display:grid; grid-template-columns:94px minmax(0,1fr); column-gap:22px; }
@@ -93,8 +93,60 @@
     .profile-link-row { flex-wrap:wrap; gap:7px; } .profile-links a { padding:4px 8px; }
     .pub-list { padding-left:17px; } .pub-title { font-size:14.5px; }
   }
+
+  /* Compact, accessible expand/collapse controls for publications and teaching. */
+  .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .pub-tools { display:flex; gap:9px; margin:3px 0 8px; }
+  .pub-tools input { flex:1; min-width:0; border:1px solid #dbe4eb; border-radius:7px; background:#fbfcfd; padding:10px 12px; font:inherit; font-size:14px; color:var(--ink); }
+  .pub-tools input:focus-visible { outline:2px solid #81b6dc; outline-offset:1px; }
+  .control-button { border:1px solid #dbe4eb; background:#f0f5f9; color:var(--blue); border-radius:7px; padding:8px 12px; font:inherit; font-size:13px; cursor:pointer; }
+  .control-button:hover, .text-button:hover { background:#e5f0f8; }
+  .pub-tools-secondary { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px 14px; margin-bottom:10px; }
+  .pub-status { margin:0; color:var(--muted); font-size:12.5px; }
+  .pub-actions { display:flex; gap:10px; }
+  .text-button { border:0; border-radius:4px; padding:4px 7px; background:transparent; color:var(--blue); cursor:pointer; font:inherit; font-size:12.5px; }
+  .text-button:disabled { cursor:default; color:#8895a3; background:transparent; }
+  .fold { border-bottom:1px solid var(--border); }
+  .fold-heading { list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px; padding:13px 3px; }
+  .fold-heading::-webkit-details-marker { display:none; }
+  .fold-heading::before { content:'+'; display:inline-flex; flex:0 0 19px; justify-content:center; color:var(--blue); font-size:19px; line-height:1; font-weight:500; }
+  .fold[open] > .fold-heading::before { content:'−'; }
+  .fold-heading:hover { background:var(--pale); }
+  .fold-heading:focus-visible { outline:2px solid #8dbbe0; outline-offset:1px; border-radius:4px; }
+  .fold-main { display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 12px; min-width:0; }
+  .fold-title { font-weight:650; line-height:1.38; font-size:16px; }
+  .fold-count, .fold-years { color:var(--muted); font-size:12.5px; }
+  .pub-group-award { color:var(--gold); font-size:11.5px; font-weight:600; }
+  .fold-body { padding:1px 0 12px 28px; }
+  .pub-group .year-block { margin:0; }
+  .pub-list { margin-top:3px; }
+  .old-publications .year-block { margin-top:12px; }
+  .old-publications .year-block:first-child { margin-top:0; }
+  .old-publications .year-block h3 { margin:6px 0 9px; font-size:14px; }
+  .pub-item[hidden], .year-block[hidden], .fold[hidden], .pub-empty[hidden] { display:none !important; }
+  .pub-empty { padding:18px 2px; color:var(--muted); font-size:14px; }
+  .teaching-group .fold-body { padding-bottom:14px; }
+  .teaching-group .teach-row:last-child { border-bottom:none; }
+  @media(max-width:520px) {
+    .pub-tools input { font-size:13px; }
+    .fold-heading { padding:12px 2px; }
+    .fold-title { font-size:14.5px; }
+    .fold-main { gap:3px 8px; }
+    .fold-body { padding-left:19px; }
+    .teaching-group .teach-row { padding:7px 0; }
+  }
+
   @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   @media print { .layout { display:block; max-width:100%; padding:0; } .sidebar { position:static; } .site-nav, .profile-links { display:none; } a { color:inherit; } section { break-inside:auto; } .pub-item { break-inside:avoid; } }
+
+  /* Social/contact icons in one centered row; documents in the second row. */
+  .profile-icon-row { gap:12px; }
+  .profile-links .profile-icon { width:43px; height:43px; flex:0 0 43px; display:inline-flex; justify-content:center; align-items:center; padding:0; border-radius:9px; }
+  .profile-links .profile-icon svg { width:21px; height:21px; display:block; }
+  .profile-links .profile-icon:hover { background:#deebf5; }
+  .profile-document-row { gap:12px; }
+  .profile-document-row a { justify-content:center; }
+  @media(max-width:520px){ .profile-icon-row {gap:11px;} .profile-links .profile-icon {width:42px;height:42px;flex-basis:42px;} }
   </style>
 </head>
 <body>
@@ -107,15 +159,13 @@
     <p class="role">Computational Linguist<br>Natural Language Processing<br>Language Understanding &amp; AI Evaluation</p>
     <p class="location">Munich, Germany</p>
     <div class="profile-links" aria-label="External profiles and contact">
-      <div class="profile-link-row">
-        <button type="button" id="email-contact" aria-label="Send an email">Email</button>
+      <div class="profile-link-row profile-icon-row" aria-label="Contact and academic profiles">
+        <button type="button" id="email-contact" class="profile-icon" aria-label="Email" title="Email"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg><span class="visually-hidden">Email</span></button>
+        <a class="profile-icon" href="https://scholar.google.com/citations?user=RlfQr2wAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar"><svg aria-hidden="true" focusable="false" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M390.9 298.5c0 0 0 .1 .1 .1c9.2 19.4 14.4 41.1 14.4 64C405.3 445.1 338.5 512 256 512s-149.3-66.9-149.3-149.3c0-22.9 5.2-44.6 14.4-64h0c1.7-3.6 3.6-7.2 5.6-10.7c4.4-7.6 9.4-14.7 15-21.3c27.4-32.6 68.5-53.3 114.4-53.3c33.6 0 64.6 11.1 89.6 29.9c9.1 6.9 17.4 14.7 24.8 23.5c5.6 6.6 10.6 13.8 15 21.3c2 3.4 3.8 7 5.5 10.5zm26.4-18.8c-30.1-58.4-91-98.4-161.3-98.4s-131.2 40-161.3 98.4L0 202.7 256 0 512 202.7l-94.7 77.1z"/></svg><span class="visually-hidden">Google Scholar</span></a>
+        <a class="profile-icon" href="https://github.com/logan-siyao-peng" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg aria-hidden="true" focusable="false" viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg><span class="visually-hidden">GitHub</span></a>
+        <a class="profile-icon" href="https://www.linkedin.com/in/logan-siyao-peng/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg><span class="visually-hidden">LinkedIn</span></a>
       </div>
-      <div class="profile-link-row">
-        <a href="https://scholar.google.com/citations?user=RlfQr2wAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        <a href="https://github.com/logan-siyao-peng" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/logan-siyao-peng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-      <div class="profile-link-row">
+      <div class="profile-link-row profile-document-row" aria-label="Download curriculum vitae or resume">
         <a href="downloads/Peng-CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a href="downloads/Siyao_Peng_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
       </div>
@@ -145,10 +195,22 @@
 
     <section id="publications" aria-labelledby="pub-heading">
       <h2 id="pub-heading">Publications</h2>
-      <nav class="pub-jumps" aria-label="Jump to publication year">
-        <a href="#pub-2026">2026</a><a href="#pub-2025">2025</a><a href="#pub-2024">2024</a><a href="#pub-2023">2023</a><a href="#pub-2022">2022</a><a href="#pub-2021">2021</a><a href="#pub-2020">2020</a><a href="#pub-2019">2019</a><a href="#pub-2018">2018</a>
-      </nav>
-      <div class="year-block" id="pub-2026"><h3>2026</h3><ol class="pub-list">
+      <div class="pub-tools" role="search" aria-label="Search publications">
+        <label class="visually-hidden" for="publication-search">Search all publications</label>
+        <input id="publication-search" type="search" autocomplete="off" placeholder="Search papers, authors, venues, or years…">
+        <button id="publication-reset" type="button" class="control-button">Clear</button>
+      </div>
+      <div class="pub-tools-secondary">
+        <p class="pub-status" id="publication-status" role="status" aria-live="polite">34 publications · 2026 shown by default</p>
+        <div class="pub-actions">
+          <button id="expand-publications" class="text-button" type="button">Expand all</button>
+          <button id="collapse-publications" class="text-button" type="button">Collapse all</button>
+        </div>
+      </div>
+      <p id="publication-empty" class="pub-empty" hidden>No publications match your search.</p>
+      <details class="fold pub-group" data-pub-group="2026" open>
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">2026</span><span class="fold-count">5 papers</span></span></summary>
+        <div class="fold-body"><div class="year-block" id="pub-2026" data-year="2026"><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2026.findings-emnlp.266/" target="_blank" rel="noopener noreferrer">Disagreeing Rationales: Rethinking Classification and Explainability Evaluation in Hate Speech Detection</a></div>
         <div class="pub-authors">Benedetta Muscato, Beiduo Chen, Gizem Gezici, <strong>Siyao Peng</strong>, Barbara Plank, and Fosca Giannotti</div>
         <div class="pub-venue">Findings of EMNLP 2026</div></li>
@@ -164,8 +226,11 @@
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2026.lrec-1.100/" target="_blank" rel="noopener noreferrer">Information Asymmetry across Language Varieties: A Case Study on Cantonese-Mandarin and Bavarian-German QA</a></div>
         <div class="pub-authors">Renhao Pei*, <strong>Siyao Peng</strong>*, Verena Blaschke, Robert Litschko, and Barbara Plank</div>
         <div class="pub-venue">LREC 2026</div></li>
-</ol></div>
-<div class="year-block" id="pub-2025"><h3>2025</h3><ol class="pub-list">
+</ol></div></div>
+      </details>
+      <details class="fold pub-group" data-pub-group="2025">
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">2025</span><span class="fold-count">7 papers</span><span class="pub-group-award">SAC Highlight Award</span></span></summary>
+        <div class="fold-body"><div class="year-block" id="pub-2025" data-year="2025"><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2025.emnlp-main.1728/" target="_blank" rel="noopener noreferrer">LiTEx: A Linguistic Taxonomy of Explanations for Understanding Within-Label Variation in Natural Language Inference</a> <span class="award">SAC Highlight Award</span></div>
         <div class="pub-authors">Pingjun Hong, Beiduo Chen, <strong>Siyao Peng</strong>, Marie-Catherine de Marneffe, and Barbara Plank</div>
         <div class="pub-venue">EMNLP 2025</div></li>
@@ -187,8 +252,11 @@
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2025.cl-1.3/" target="_blank" rel="noopener noreferrer">eRST: A Signaled Graph Theory of Discourse Relations and Organization</a></div>
         <div class="pub-authors">Amir Zeldes, Tatsuya Aoyama, Yang Janet Liu, <strong>Siyao Peng</strong>, Debopam Das, and Luke Gessler</div>
         <div class="pub-venue">Computational Linguistics</div></li>
-</ol></div>
-<div class="year-block" id="pub-2024"><h3>2024</h3><ol class="pub-list">
+</ol></div></div>
+      </details>
+      <details class="fold pub-group" data-pub-group="2024">
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">2024</span><span class="fold-count">9 papers</span><span class="pub-group-award">SAC Award</span></span></summary>
+        <div class="fold-body"><div class="year-block" id="pub-2024" data-year="2024"><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2024.nlp4pi-1.27/" target="_blank" rel="noopener noreferrer">MultiClimate: Multimodal Stance Detection on Climate Change Videos</a></div>
         <div class="pub-authors">Jiawen Wang*, Longfei Zuo*, <strong>Siyao Peng</strong>, and Barbara Plank</div>
         <div class="pub-venue">NLP4PI Workshop (EMNLP 2024)</div></li>
@@ -216,8 +284,11 @@
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2024.law-1.20/" target="_blank" rel="noopener noreferrer">EEVEE: An Easy Annotation Tool for Natural Language Processing</a></div>
         <div class="pub-authors">Axel Sorensen, <strong>Siyao Peng</strong>, Barbara Plank, and Rob van der Goot</div>
         <div class="pub-venue">LAW Workshop (EACL 2024)</div></li>
-</ol></div>
-<div class="year-block" id="pub-2023"><h3>2023</h3><ol class="pub-list">
+</ol></div></div>
+      </details>
+      <details class="fold pub-group" data-pub-group="2023">
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">2023</span><span class="fold-count">3 papers</span></span></summary>
+        <div class="fold-body"><div class="year-block" id="pub-2023" data-year="2023"><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2023.ijcnlp-short.14/" target="_blank" rel="noopener noreferrer">Incorporating Singletons and Mention-based Features in Coreference Resolution via Multi-task Learning for Better Generalization</a></div>
         <div class="pub-authors">Yilun Zhu, <strong>Siyao Peng</strong>, Sameer Pradhan, and Amir Zeldes</div>
         <div class="pub-venue">IJCNLP-AACL 2023</div></li>
@@ -227,13 +298,16 @@
 <li class="pub-item"><div class="pub-title"><a href="https://repository.library.georgetown.edu/handle/10822/1082584" target="_blank" rel="noopener noreferrer">Cross-Paragraph Discourse Structure in Rhetorical Structure Theory Parsing and Treebanking for Chinese and English</a></div>
         <div class="pub-authors"><strong>Siyao Peng</strong></div>
         <div class="pub-venue">Ph.D. dissertation, Georgetown University</div></li>
-</ol></div>
-<div class="year-block" id="pub-2022"><h3>2022</h3><ol class="pub-list">
+</ol></div></div>
+      </details>
+      <details class="fold pub-group" data-pub-group="2018-2022">
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">2018–2022</span><span class="fold-years">(Ph.D. years)</span><span class="fold-count">10 papers</span></span></summary>
+        <div class="fold-body old-publications"><div class="year-block" id="pub-2022" data-year="2022"><h3>2022</h3><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2022.aacl-short.47/" target="_blank" rel="noopener noreferrer">GCDT: A Chinese RST Treebank for Multigenre and Multilingual Discourse Parsing</a></div>
         <div class="pub-authors"><strong>Siyao Peng</strong>, Yang Janet Liu, and Amir Zeldes</div>
         <div class="pub-venue">AACL-IJCNLP 2022</div></li>
 </ol></div>
-<div class="year-block" id="pub-2021"><h3>2021</h3><ol class="pub-list">
+<div class="year-block" id="pub-2021" data-year="2021"><h3>2021</h3><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/2021.disrpt-1.6/" target="_blank" rel="noopener noreferrer">DisCoDisCo at the DISRPT2021 Shared Task: A System for Discourse Segmentation, Classification, and Connective Detection</a></div>
         <div class="pub-authors">Luke Gessler, Shabnam Behzad, Yang Janet Liu, <strong>Siyao Peng</strong>, Yilun Zhu, and Amir Zeldes</div>
         <div class="pub-venue">DISRPT Shared Task (EMNLP 2021)</div></li>
@@ -241,7 +315,7 @@
         <div class="pub-authors">Luke Gessler, <strong>Siyao Peng</strong>, Yang Liu, Yilun Zhu, Shabnam Behzad, and Amir Zeldes</div>
         <div class="pub-venue">SCiL 2021</div></li>
 </ol></div>
-<div class="year-block" id="pub-2020"><h3>2020</h3><ol class="pub-list">
+<div class="year-block" id="pub-2020" data-year="2020"><h3>2020</h3><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://www.statmt.org/wmt20/pdf/2020.wmt-1.124.pdf" target="_blank" rel="noopener noreferrer">Tencent Submission for WMT20 Quality Estimation Shared Task</a></div>
         <div class="pub-authors">Haijiang Wu, Zixuan Wang, Qingsong Ma, Xinjie Wen, Ruichen Wang, Xiaoli Wang, Yulin Zhang, Zhipeng Yao, and <strong>Siyao Peng</strong></div>
         <div class="pub-venue">WMT 2020</div></li>
@@ -255,7 +329,7 @@
         <div class="pub-authors">Luke Gessler, <strong>Siyao Peng</strong>, Yang Liu, Yilun Zhu, Shabnam Behzad, and Amir Zeldes</div>
         <div class="pub-venue">LREC 2020</div></li>
 </ol></div>
-<div class="year-block" id="pub-2019"><h3>2019</h3><ol class="pub-list">
+<div class="year-block" id="pub-2019" data-year="2019"><h3>2019</h3><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1145/3357384.3358145" target="_blank" rel="noopener noreferrer">Modeling Long-Range Context for Concurrent Dialogue Acts Recognition</a></div>
         <div class="pub-authors">Yue Yu*, <strong>Siyao Peng</strong>*, and Grace Hui Yang</div>
         <div class="pub-venue">CIKM 2019</div></li>
@@ -263,36 +337,41 @@
         <div class="pub-authors">Yue Yu, Yilun Zhu, Yang Liu, Yan Liu, <strong>Siyao Peng</strong>, Mackenzie Gong, and Amir Zeldes</div>
         <div class="pub-venue">DISRPT Workshop (NAACL 2019)</div></li>
 </ol></div>
-<div class="year-block" id="pub-2018"><h3>2018</h3><ol class="pub-list">
+<div class="year-block" id="pub-2018" data-year="2018"><h3>2018</h3><ol class="pub-list">
 <li class="pub-item"><div class="pub-title"><a href="https://aclanthology.org/W18-4918/" target="_blank" rel="noopener noreferrer">All Roads Lead to UD: Converting Stanford and Penn Parses to English Universal Dependencies with Multilayer Annotations</a></div>
         <div class="pub-authors"><strong>Siyao Peng</strong> and Amir Zeldes</div>
         <div class="pub-venue">LAW-MWE-CxG Workshop (COLING 2018)</div></li>
-</ol></div>
+</ol></div></div>
+      </details>
       <p class="note">* Equal contribution, as indicated in the respective publication and CV.</p>
     </section>
 
     <section id="teaching" aria-labelledby="teaching-heading">
       <h2 id="teaching-heading">Teaching</h2>
-      <h3 class="subsection-heading">Instructor · LMU Munich (2023–2026)</h3>
-      <div class="teach-row"><div><strong>Introduction to Natural Language Processing</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
+      <details class="fold teaching-group" open>
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">LMU Munich · Instructor · 2023–2025</span><span class="fold-count">8 courses</span></span></summary>
+        <div class="fold-body teaching-body"><div class="teach-row"><div><strong>Introduction to Natural Language Processing</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
       <div class="teach-row"><div><strong>Trustworthy Data-Centric AI</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2024–25, 2025–26</div></div>
       <div class="teach-row"><div><strong>Symbolic Programming Language</strong> <span class="term">· Lecture</span></div><div class="term">Winter 2023–24</div></div>
       <div class="teach-row"><div><strong>Linguistic Annotation Frameworks I: Introduction</strong> <span class="term">· Seminar</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
       <div class="teach-row"><div><strong>Explaining and Interpreting Annotations in NLP</strong> <span class="term">· Seminar</span></div><div class="term">Winter 2025–26</div></div>
       <div class="teach-row"><div><strong>Natural Language Processing for Climate Change</strong> <span class="term">· Seminar</span></div><div class="term">Summers 2024, 2025</div></div>
       <div class="teach-row"><div><strong>LAF II: Multilingual Natural Language Inference</strong> <span class="term">· Seminar</span></div><div class="term">Summer 2025</div></div>
-      <div class="teach-row"><div><strong>LAF II: Variation, Explanation &amp; Validation</strong> <span class="term">· Seminar</span></div><div class="term">Summer 2024</div></div>
-
-      <h3 class="subsection-heading">Teaching Assistant · Georgetown University (2018–2021)</h3>
-      <div class="teach-row"><div><strong>LING-367: Computational Corpus Linguistics</strong></div><div class="term">Fall 2021</div></div>
+      <div class="teach-row"><div><strong>LAF II: Variation, Explanation &amp; Validation</strong> <span class="term">· Seminar</span></div><div class="term">Summer 2024</div></div></div>
+      </details>
+      <details class="fold teaching-group" >
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">Georgetown University · Teaching Assistant · 2018–2021</span><span class="fold-count">5 courses</span></span></summary>
+        <div class="fold-body teaching-body"><div class="teach-row"><div><strong>LING-367: Computational Corpus Linguistics</strong></div><div class="term">Fall 2021</div></div>
       <div class="teach-row"><div><strong>LING-001: Introduction to Language</strong></div><div class="term">Fall 2020</div></div>
       <div class="teach-row"><div><strong>LING-469: Analyzing Language Data with R</strong></div><div class="term">Springs 2019, 2020</div></div>
       <div class="teach-row"><div><strong>LING-462/COSC-482: Statistical Machine Translation</strong></div><div class="term">Spring 2020</div></div>
-      <div class="teach-row"><div><strong>LING-362: Introduction to Natural Language Processing</strong></div><div class="term">Fall 2018</div></div>
-
-      <h3 class="subsection-heading">Teaching Assistant · Stony Brook University (2016–2017)</h3>
-      <div class="teach-row"><div><strong>LIN-230: Languages of the World</strong></div><div class="term">Spring 2017</div></div>
-      <div class="teach-row"><div><strong>LIN-200: Language in the U.S.</strong></div><div class="term">Fall 2016</div></div>
+      <div class="teach-row"><div><strong>LING-362: Introduction to Natural Language Processing</strong></div><div class="term">Fall 2018</div></div></div>
+      </details>
+      <details class="fold teaching-group" >
+        <summary class="fold-heading"><span class="fold-main"><span class="fold-title">Stony Brook University · Teaching Assistant · 2016–2017</span><span class="fold-count">2 courses</span></span></summary>
+        <div class="fold-body teaching-body"><div class="teach-row"><div><strong>LIN-230: Languages of the World</strong></div><div class="term">Spring 2017</div></div>
+      <div class="teach-row"><div><strong>LIN-200: Language in the U.S.</strong></div><div class="term">Fall 2016</div></div></div>
+      </details>
     </section>
 
     <section id="service" aria-labelledby="service-heading">
@@ -327,6 +406,51 @@
     const address = String.fromCharCode(108, 111, 103, 97, 110, 112, 101, 110, 103, 49, 57, 57, 50, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109);
     window.location.href = 'mailto:' + address;
   });
+</script>
+
+<script>
+/* Publication search examines all papers, even those in collapsed year groups. */
+(function () {
+  const section = document.getElementById('publications');
+  if (!section) return;
+  const search = document.getElementById('publication-search');
+  const groups = [...section.querySelectorAll('details.pub-group')];
+  const papers = [...section.querySelectorAll('.pub-item')];
+  const result = document.getElementById('publication-status');
+  const empty = document.getElementById('publication-empty');
+  const expand = document.getElementById('expand-publications');
+  const collapse = document.getElementById('collapse-publications');
+  const clear = document.getElementById('publication-reset');
+
+  function filterPapers() {
+    const tokens = search.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+    const filtering = tokens.length > 0;
+    let matches = 0;
+    papers.forEach(paper => {
+      const year = paper.closest('.year-block')?.dataset.year || '';
+      const searchable = (paper.textContent + ' ' + year).toLocaleLowerCase();
+      const visible = !filtering || tokens.every(t => searchable.includes(t));
+      paper.hidden = !visible;
+      if (visible) matches++;
+    });
+    section.querySelectorAll('.year-block').forEach(yearBlock => {
+      yearBlock.hidden = filtering && !yearBlock.querySelector('.pub-item:not([hidden])');
+    });
+    groups.forEach(group => {
+      const hasMatch = !!group.querySelector('.pub-item:not([hidden])');
+      group.hidden = filtering && !hasMatch;
+      if (filtering) group.open = hasMatch;
+      else group.open = group.dataset.pubGroup === '2026';
+    });
+    empty.hidden = matches !== 0;
+    result.textContent = filtering ? `${matches} matching ${matches === 1 ? 'paper' : 'papers'} (of ${papers.length})` : `${papers.length} publications · 2026 shown by default`;
+    expand.disabled = collapse.disabled = filtering;
+  }
+  search.addEventListener('input', filterPapers);
+  clear.addEventListener('click', () => { search.value = ''; filterPapers(); search.focus(); });
+  expand.addEventListener('click', () => groups.forEach(group => group.open = true));
+  collapse.addEventListener('click', () => groups.forEach(group => group.open = false));
+})();
 </script>
 </body>
 </html>

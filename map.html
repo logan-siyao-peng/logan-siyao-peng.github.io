@@ -37,6 +37,50 @@
 .embedded .details{min-height:145px;max-height:275px;order:0;overflow-y:auto;overflow-x:hidden;border-top:2px solid var(--line)}
 @media(max-width:520px){.embedded .shell{padding:8px}.embedded .map-space,.embedded .map-space svg{min-height:285px}.embedded .list-card{height:1040px;max-height:none;grid-template-rows:auto minmax(310px,1fr) auto}.embedded .scrollarea{max-height:none;min-height:0;order:0}.embedded .details{max-height:610px;min-height:240px;order:0}}
 
+
+/* v12: separate the place index and selected location into distinct panels. */
+.workspace { grid-template-columns:minmax(0,1fr) 265px 330px; gap:14px; align-items:stretch; }
+.map-card { min-height:580px; }
+.list-card { display:flex; flex-direction:column; height:610px; min-height:0; max-height:none; }
+.list-card .scrollarea { flex:1 1 0; min-height:0; max-height:none; overflow-y:auto; }
+.detail-card { min-width:0; height:610px; min-height:0; display:flex; flex-direction:column; overflow:hidden; border:1px solid var(--line); border-radius:var(--r); background:#fcfdfe; }
+.detail-header { flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; padding:15px 17px; border-bottom:1px solid var(--line); background:#fff; }
+.detail-header h2 { margin:0; font-size:15px; line-height:1.4; letter-spacing:-.01em; }
+.close-details { border:0; background:#edf3f7; border-radius:6px; width:28px; height:28px; font-size:21px; color:#566c7e; cursor:pointer; line-height:1; }
+.close-details:hover { background:#dce8ef; }
+.detail-card .details { flex:1 1 0; min-height:0; max-height:none; border-top:0; overflow:auto; padding:15px 17px 23px; }
+.detail-card .details h3 {font-size:17px;}
+.detail-card .record {padding:11px 0;}
+.detail-card .record-title {font-size:13px;}
+.detail-card .record-date,.detail-card .record-note,.detail-card .record a {font-size:11.5px;}
+.detail-card:not(.has-selection) .details {display:flex; align-items:center; justify-content:center; text-align:center;}
+.detail-card:not(.has-selection) .details .detail-sub {font-size:12.5px; line-height:1.6; max-width:240px;}
+@media(max-width:1320px){
+  .workspace {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .workspace .map-card {grid-column:1/-1; min-height:400px;}
+  .workspace .list-card {grid-column:1;height:570px;max-height:none;}
+  .workspace .detail-card {grid-column:2;height:570px;}
+}
+/* The homepage map uses two separate side-by-side panes beneath the map. */
+.embedded .workspace {grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;}
+.embedded .workspace .map-card {grid-column:1/-1; min-height:355px;}
+.embedded .workspace .list-card {grid-column:1; height:570px;display:flex;max-height:none;min-height:0;}
+.embedded .workspace .detail-card {grid-column:2; height:570px;min-height:0;}
+.embedded .list-card .scrollarea {flex:1 1 0;max-height:none;min-height:0;overflow-y:auto;}
+.embedded .detail-card .details {flex:1 1 0;max-height:none;min-height:0;overflow-y:auto;}
+/* On phones, display distinct full-width list and details cards, not a split/cramped card. */
+@media(max-width:650px){
+  .workspace,.embedded .workspace {grid-template-columns:minmax(0,1fr);}
+  .workspace .map-card,.embedded .workspace .map-card,
+  .workspace .list-card,.embedded .workspace .list-card,
+  .workspace .detail-card,.embedded .workspace .detail-card {grid-column:1;}
+  .workspace .list-card,.embedded .workspace .list-card {display:flex;height:345px;min-height:0;max-height:none;}
+  .workspace .detail-card,.embedded .workspace .detail-card {height:510px;min-height:0;max-height:none;}
+  html:not(.embedded) .workspace .list-card {height:345px;display:flex;min-height:0;max-height:none;}
+  html:not(.embedded) .workspace .list-card .scrollarea {min-height:0;max-height:none;flex:1;}
+
+  .map-space,.map-space svg{min-height:285px;}
+}
 </style>
 </head>
 <body>
@@ -353,7 +397,14 @@
     <div class="map-tools"><button class="map-button" id="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button class="map-button" id="zoom-out" title="Zoom out" aria-label="Zoom out">−</button><button class="map-button" id="fit" title="Show the world" aria-label="Reset map view" style="font-size:15px">⌖</button></div>
     <div class="map-meta">City names appear beside markers · Click any city to explore</div>
   </section>
-  <aside class="list-card" aria-label="Places and academic records"><div class="list-top"><h2>Places &amp; milestones</h2><input id="search" class="search" type="search" aria-label="Search places and events" placeholder="Search a city, conference, or topic…" autocomplete="off"><p class="list-meta" id="result-meta">Loading entries…</p></div><div class="scrollarea" id="places-list" aria-live="polite"></div><div class="details" id="details" aria-live="polite"><p class="detail-sub">Select a city to see related milestones.</p></div></aside>
+  <aside class="list-card" aria-label="Places and academic records">
+    <div class="list-top"><h2>Places &amp; milestones</h2><input id="search" class="search" type="search" aria-label="Search places and events" placeholder="Search a city, conference, or topic…" autocomplete="off"><p class="list-meta" id="result-meta">Loading entries…</p></div>
+    <div class="scrollarea" id="places-list" aria-label="Scrollable list of cities" aria-live="polite"></div>
+  </aside>
+  <aside class="detail-card" id="detail-panel" aria-label="Selected location details">
+    <div class="detail-header"><h2>Location details</h2><button class="close-details" type="button" id="close-details" aria-label="Clear selected location" title="Clear selected location" hidden>×</button></div>
+    <div class="details" id="details" aria-live="polite"><p class="detail-sub">Select a marker or city to explore its publications and milestones.</p></div>
+  </aside>
  </div>
  <div class="explainer"><div class="explain-text"><strong>How to read this map.</strong> Education pins mark my universities; Employment pins mark research appointments and internships. Conference Attended shows conferences I attended <strong>and their associated papers</strong>; Conference Accepted shows papers from conferences I did not attend. Online and venue-free publications are listed separately below. Click a city to see dates, roles, publications, and sources. Zoom in to reveal more city labels.</div><a href="#virtual">Virtual / venue-free entries ↓</a></div>
  <section class="extras" id="virtual"><h2>Online events &amp; work without a physical conference venue</h2><p>CV entries without a meaningful physical event location are collected here rather than assigned an arbitrary map pin.</p><div class="extras-list" id="extras-list"></div></section>
@@ -437,11 +488,13 @@ document.getElementById('city-count').textContent=groups.length;document.getElem
 document.getElementById('result-meta').textContent=`${groups.length} mapped cities · ${recs.length} matching entries`;
 pl.innerHTML=groups.length?groups.map(g=>`<button class="place-row${g.id===selected?' active':''}" type="button" data-id="${esc(g.id)}"><div><h3>${esc(g.place.name)}, ${esc(g.place.country)}</h3><p>${citySummary(g.entries)}</p></div><span class="place-count">${g.entries.length}</span></button>`).join(''):'<div class="empty">No matching locations. Try enabling more categories or changing the search.</div>';
 pl.querySelectorAll('.place-row').forEach(b=>b.addEventListener('click',()=>pick(b.dataset.id,true)));
-if(selected){let group=groups.find(g=>g.id===selected);de.innerHTML=`<h3>${esc(group.place.name)}</h3><p class="detail-sub">${esc(group.place.country)} · ${group.entries.length} milestone${group.entries.length===1?'':'s'}</p>${group.entries.map(recordHTML).join('')}`;}else{de.innerHTML='<p class="detail-sub">Select a marker or place to see dated milestones and source links.</p>';}}
+if(selected){let group=groups.find(g=>g.id===selected);de.innerHTML=`<h3>${esc(group.place.name)}</h3><p class="detail-sub">${esc(group.place.country)} · ${group.entries.length} milestone${group.entries.length===1?'':'s'}</p>${group.entries.map(recordHTML).join('')}`;}else{de.innerHTML='<p class="detail-sub">Select a marker or place to see dated milestones and source links.</p>';}
+ const panel=document.getElementById('detail-panel');panel.classList.toggle('has-selection',Boolean(selected));document.getElementById('close-details').hidden=!selected;}
 for(const b of document.querySelectorAll('.filter'))b.addEventListener('click',()=>{let k=b.dataset.type;activeTypes.has(k)?activeTypes.delete(k):activeTypes.add(k);b.setAttribute('aria-pressed',String(activeTypes.has(k)));render();});
 for(let y=1992;y<=2026;y++){document.getElementById('year-min').add(new Option(y,y));document.getElementById('year-max').add(new Option(y,y));}document.getElementById('year-min').value='1992';document.getElementById('year-max').value='2026';
 document.getElementById('year-min').addEventListener('change',e=>{minYear=+e.target.value;if(minYear>maxYear){maxYear=minYear;document.getElementById('year-max').value=maxYear;}render();});document.getElementById('year-max').addEventListener('change',e=>{maxYear=+e.target.value;if(maxYear<minYear){minYear=maxYear;document.getElementById('year-min').value=minYear;}render();});
 document.getElementById('search').addEventListener('input',e=>{search=e.target.value.trim().toLowerCase();render();});
+document.getElementById('close-details').addEventListener('click',()=>{selected=null;render();});
 document.getElementById('reset').addEventListener('click',()=>{activeTypes=new Set(DEFAULT_TYPES);document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed',String(activeTypes.has(b.dataset.type))));minYear=1992;maxYear=2026;document.getElementById('year-min').value='1992';document.getElementById('year-max').value='2026';document.getElementById('search').value='';search='';selected=null;resetView();render();});
 document.getElementById('zoom-in').addEventListener('click',()=>zoom(1.65));document.getElementById('zoom-out').addEventListener('click',()=>zoom(1/1.65));document.getElementById('fit').addEventListener('click',resetView);
 svg.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.13:1/1.13,screenToMap(e.clientX,e.clientY));},{passive:false});
