@@ -28,14 +28,15 @@
   .hanzi { color:var(--muted); font-size:15px; margin:3px 0 17px; }
   .role { color:#465a6d; font-size:14px; line-height:1.6; margin:0 0 9px; }
   .location { font-size:13px; color:var(--muted); margin:0 0 25px; }
-  /* Center the profile identity on desktop; keep contacts and navigation left-aligned. */
+  /* Center the profile identity and three contact rows on desktop; keep only the section navigation left-aligned. */
   @media(min-width:831px) { .name, .hanzi, .role, .location { text-align:center; } }
   /* Keep the concise About Me introduction as one natural, readable paragraph. */
   #about .about-summary { margin:0; line-height:1.75; }
-  .profile-links { display:flex; flex-direction:column; align-items:flex-start; gap:9px; margin:0 0 28px; }
-  .profile-link-row { display:flex; flex-wrap:nowrap; align-items:center; gap:8px; }
-  .profile-links a { font-size:13px; display:inline-flex; white-space:nowrap; padding:4px 9px; color:var(--blue); background:#f0f5f9; border:1px solid #e0e9f0; border-radius:4px; }
-  .profile-links a:hover { background:#e5f0f8; text-decoration:none; }
+  .profile-links { display:flex; flex-direction:column; align-items:center; gap:9px; margin:0 0 28px; }
+  .profile-link-row { display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; width:100%; gap:8px; }
+  .profile-links a, .profile-links button { font:inherit; font-size:13px; display:inline-flex; align-items:center; white-space:nowrap; padding:4px 9px; color:var(--blue); background:#f0f5f9; border:1px solid #e0e9f0; border-radius:4px; cursor:pointer; }
+  .profile-links a:hover, .profile-links button:hover { background:#e5f0f8; text-decoration:none; }
+  .profile-links button:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; }
   .site-nav { border-top:1px solid var(--border); padding-top:13px; padding-left:0; display:flex; flex-direction:column; gap:4px; }
   .site-nav a { display:block; padding:5px 0; font-size:14px; color:#4a5c6c; }
   .site-nav a:hover { color:var(--blue); }
@@ -100,7 +101,7 @@
     <p class="location">Munich, Germany</p>
     <div class="profile-links" aria-label="External profiles and contact">
       <div class="profile-link-row">
-        <a href="mailto:loganpeng1992@gmail.com">Email</a>
+        <button type="button" id="email-contact" aria-label="Send an email">Email</button>
       </div>
       <div class="profile-link-row">
         <a href="https://scholar.google.com/citations?user=RlfQr2wAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
@@ -123,7 +124,7 @@
   <main id="main-content">
     <section id="about" aria-labelledby="about-heading">
       <h2 id="about-heading">About Me</h2>
-      <p class="about-summary">My research examines how context and differences in human interpretation shape language understanding and the evaluation of NLP systems. Drawing on linguistic analysis and human judgments, I study variation in language data, explanation-based evaluation, and information access across languages and regional varieties. From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I studied discourse structure and multilingual language resources with <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a> and <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>.</p>
+      <p class="about-summary">My research examines how context and differences in human interpretation shape language understanding, with a focus on improving the reliability of NLP evaluation. Drawing on linguistic analysis and human judgments, I study variation in language data, explanation-based evaluation, and information access across languages and regional varieties. From April 2023 to March 2026, I was a postdoctoral researcher in <a href="https://mainlp.github.io/" target="_blank" rel="noopener noreferrer">MaiNLP (Munich AI &amp; NLP)</a> at LMU Munich, working with <a href="https://bplank.github.io/" target="_blank" rel="noopener noreferrer">Barbara Plank</a>. I received my Ph.D. in Linguistics from Georgetown University, where I studied discourse structure and multilingual language resources with <a href="https://gucorpling.org/amir/" target="_blank" rel="noopener noreferrer">Amir Zeldes</a> and <a href="https://people.cs.georgetown.edu/nschneid/" target="_blank" rel="noopener noreferrer">Nathan Schneider</a>.</p>
     </section>
 
 
@@ -304,5 +305,13 @@
     <footer>© 2026 Siyao (Logan) Peng · Last updated November 2026 · Hosted on GitHub Pages</footer>
   </main>
 </div>
+<script>
+  // Construct the address only after a user clicks Email.
+  // This discourages simple address-harvesting bots; it is not a security guarantee.
+  document.getElementById('email-contact').addEventListener('click', function () {
+    const address = String.fromCharCode(108, 111, 103, 97, 110, 112, 101, 110, 103, 49, 57, 57, 50, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109);
+    window.location.href = 'mailto:' + address;
+  });
+</script>
 </body>
 </html>
