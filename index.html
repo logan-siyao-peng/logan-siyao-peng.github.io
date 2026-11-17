@@ -22,23 +22,25 @@
   a:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; border-radius:3px; }
   .layout { max-width:var(--max); margin:0 auto; padding:64px 34px 40px; display:grid; grid-template-columns:300px minmax(0,1fr); gap:60px; }
   .sidebar { align-self:start; position:sticky; top:28px; }
-  .avatar { position:relative; overflow:hidden; width:176px; height:176px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:53px; font-weight:600; letter-spacing:-.08em; margin:0 auto 22px; user-select:none; }
+  .avatar { position:relative; overflow:hidden; width:176px; height:176px; display:grid; place-items:center; border-radius:50%; background:#e9eff4; color:#52718c; font-size:53px; font-weight:600; letter-spacing:-.08em; margin:0 auto 13px; user-select:none; }
   .avatar-photo { position:absolute; inset:0; width:100%; height:100%; border-radius:50%; object-fit:cover; }
   .name { margin:0 0 2px; font-size:26px; line-height:1.25; font-weight:650; letter-spacing:-.035em; }
-  .hanzi { color:var(--muted); font-size:15px; margin:3px 0 17px; }
-  .role { color:#465a6d; font-size:14px; line-height:1.6; margin:0 0 9px; }
-  .location { font-size:13px; color:var(--muted); margin:0 0 25px; }
+  .hanzi { color:var(--muted); font-size:15px; margin:2px 0 9px; }
+  .role { color:#465a6d; font-size:14px; line-height:1.48; margin:0 0 6px; }
+  .location { font-size:13px; color:var(--muted); margin:0 0 16px; }
   /* Center the profile identity and three contact rows on desktop; keep only the section navigation left-aligned. */
   @media(min-width:831px) { .name, .hanzi, .role, .location { text-align:center; } }
+  /* On shorter desktop viewports or at browser zoom, retain access to every sidebar link. */
+  @media(min-width:831px) { .sidebar { max-height:calc(100vh - 70px); max-height:calc(100dvh - 70px); overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#dbe4eb transparent; } }
   /* Keep the concise About Me introduction as one natural, readable paragraph. */
   #about .about-summary { margin:0; line-height:1.75; }
-  .profile-links { display:flex; flex-direction:column; align-items:center; gap:9px; margin:0 0 28px; }
+  .profile-links { display:flex; flex-direction:column; align-items:center; gap:7px; margin:0 0 18px; }
   .profile-link-row { display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; width:100%; gap:8px; }
   .profile-links a, .profile-links button { font:inherit; font-size:13px; display:inline-flex; align-items:center; white-space:nowrap; padding:4px 9px; color:var(--blue); background:#f0f5f9; border:1px solid #e0e9f0; border-radius:4px; cursor:pointer; }
   .profile-links a:hover, .profile-links button:hover { background:#e5f0f8; text-decoration:none; }
   .profile-links button:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; }
-  .site-nav { border-top:1px solid var(--border); padding-top:13px; padding-left:0; display:flex; flex-direction:column; gap:4px; }
-  .site-nav a { display:block; padding:5px 0; font-size:14px; color:#4a5c6c; }
+  .site-nav { border-top:1px solid var(--border); padding-top:10px; padding-left:0; display:flex; flex-direction:column; gap:2px; }
+  .site-nav a { display:block; padding:4px 0; font-size:15.5px; color:#4a5c6c; }
   .site-nav a:hover { color:var(--blue); }
   main { min-width:0; }
   section { margin:0 0 49px; scroll-margin-top:30px; }
@@ -76,8 +78,6 @@
   .footprint-more a { font-weight:600; }
   @media(max-width:830px) { .footprint-frame { height:970px; } }
   @media(max-width:520px) { .footprint-frame { height:1420px; } }
-  @media (min-width:831px) and (max-width:1080px) { .footprint-frame { height:1430px; } }
-  @media (min-width:521px) and (max-width:700px) { .footprint-frame { height:1420px; } }
   footer { color:#82909a; font-size:12px; border-top:1px solid var(--border); padding-top:17px; margin-top:46px; }
   @media(max-width:830px) { .layout { padding:34px 24px 35px; gap:32px; grid-template-columns:1fr; }
     .sidebar { position:static; display:grid; grid-template-columns:94px minmax(0,1fr); column-gap:22px; }
@@ -129,6 +129,8 @@
   .pub-empty { padding:18px 2px; color:var(--muted); font-size:14px; }
   .teaching-group .fold-body { padding-bottom:14px; }
   .teaching-group .teach-row:last-child { border-bottom:none; }
+  /* Publication-blue course names, intentionally not bold and not fake links. */
+  .teaching-body .teach-course { color:var(--blue); font-weight:400; }
   .service-group .fold-title { font-size:15px; }
   .service-group .fold-body p { margin:0 0 8px; font-size:14.5px; }
   @media(max-width:520px) {
@@ -144,13 +146,13 @@
   @media print { .layout { display:block; max-width:100%; padding:0; } .sidebar { position:static; } .site-nav, .profile-links { display:none; } a { color:inherit; } section { break-inside:auto; } .pub-item { break-inside:avoid; } }
 
   /* Social/contact icons in one centered row; documents in the second row. */
-  .profile-icon-row { gap:12px; }
-  .profile-links .profile-icon { width:43px; height:43px; flex:0 0 43px; display:inline-flex; justify-content:center; align-items:center; padding:0; border-radius:9px; }
-  .profile-links .profile-icon svg { width:21px; height:21px; display:block; }
+  .profile-icon-row { gap:9px; }
+  .profile-links .profile-icon { width:39px; height:39px; flex:0 0 39px; display:inline-flex; justify-content:center; align-items:center; padding:0; border-radius:9px; }
+  .profile-links .profile-icon svg { width:20px; height:20px; display:block; }
   .profile-links .profile-icon:hover { background:#deebf5; }
-  .profile-document-row { gap:12px; }
+  .profile-document-row { gap:10px; }
   .profile-document-row a { justify-content:center; }
-  @media(max-width:520px){ .profile-icon-row {gap:11px;} .profile-links .profile-icon {width:42px;height:42px;flex-basis:42px;} }
+  @media(max-width:520px){ .profile-icon-row {gap:9px;} .profile-links .profile-icon {width:39px;height:39px;flex-basis:39px;} }
   </style>
 </head>
 <body>
@@ -354,27 +356,27 @@
       <h2 id="teaching-heading">Teaching</h2>
       <details class="fold teaching-group" open>
         <summary class="fold-heading"><span class="fold-main"><span class="fold-title">LMU Munich · Instructor · 2023–2025</span><span class="fold-count">8 courses</span></span></summary>
-        <div class="fold-body teaching-body"><div class="teach-row"><div><strong>Introduction to Natural Language Processing</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
-      <div class="teach-row"><div><strong>Trustworthy Data-Centric AI</strong> <span class="term">· Lecture</span></div><div class="term">Winters 2024–25, 2025–26</div></div>
-      <div class="teach-row"><div><strong>Symbolic Programming Language</strong> <span class="term">· Lecture</span></div><div class="term">Winter 2023–24</div></div>
-      <div class="teach-row"><div><strong>Linguistic Annotation Frameworks I: Introduction</strong> <span class="term">· Seminar</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
-      <div class="teach-row"><div><strong>Explaining and Interpreting Annotations in NLP</strong> <span class="term">· Seminar</span></div><div class="term">Winter 2025–26</div></div>
-      <div class="teach-row"><div><strong>Natural Language Processing for Climate Change</strong> <span class="term">· Seminar</span></div><div class="term">Summers 2024, 2025</div></div>
-      <div class="teach-row"><div><strong>LAF II: Multilingual Natural Language Inference</strong> <span class="term">· Seminar</span></div><div class="term">Summer 2025</div></div>
-      <div class="teach-row"><div><strong>LAF II: Variation, Explanation &amp; Validation</strong> <span class="term">· Seminar</span></div><div class="term">Summer 2024</div></div></div>
+        <div class="fold-body teaching-body"><div class="teach-row"><div><span class="teach-course">Introduction to Natural Language Processing</span> <span class="term">· Lecture</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
+      <div class="teach-row"><div><span class="teach-course">Trustworthy Data-Centric AI</span> <span class="term">· Lecture</span></div><div class="term">Winters 2024–25, 2025–26</div></div>
+      <div class="teach-row"><div><span class="teach-course">Symbolic Programming Language</span> <span class="term">· Lecture</span></div><div class="term">Winter 2023–24</div></div>
+      <div class="teach-row"><div><span class="teach-course">Linguistic Annotation Frameworks I: Introduction</span> <span class="term">· Seminar</span></div><div class="term">Winters 2023–24, 2024–25, 2025–26</div></div>
+      <div class="teach-row"><div><span class="teach-course">Explaining and Interpreting Annotations in NLP</span> <span class="term">· Seminar</span></div><div class="term">Winter 2025–26</div></div>
+      <div class="teach-row"><div><span class="teach-course">Natural Language Processing for Climate Change</span> <span class="term">· Seminar</span></div><div class="term">Summers 2024, 2025</div></div>
+      <div class="teach-row"><div><span class="teach-course">LAF II: Multilingual Natural Language Inference</span> <span class="term">· Seminar</span></div><div class="term">Summer 2025</div></div>
+      <div class="teach-row"><div><span class="teach-course">LAF II: Variation, Explanation &amp; Validation</span> <span class="term">· Seminar</span></div><div class="term">Summer 2024</div></div></div>
       </details>
       <details class="fold teaching-group" >
         <summary class="fold-heading"><span class="fold-main"><span class="fold-title">Georgetown University · Teaching Assistant · 2018–2021</span><span class="fold-count">5 courses</span></span></summary>
-        <div class="fold-body teaching-body"><div class="teach-row"><div><strong>LING-367: Computational Corpus Linguistics</strong></div><div class="term">Fall 2021</div></div>
-      <div class="teach-row"><div><strong>LING-001: Introduction to Language</strong></div><div class="term">Fall 2020</div></div>
-      <div class="teach-row"><div><strong>LING-469: Analyzing Language Data with R</strong></div><div class="term">Springs 2019, 2020</div></div>
-      <div class="teach-row"><div><strong>LING-462/COSC-482: Statistical Machine Translation</strong></div><div class="term">Spring 2020</div></div>
-      <div class="teach-row"><div><strong>LING-362: Introduction to Natural Language Processing</strong></div><div class="term">Fall 2018</div></div></div>
+        <div class="fold-body teaching-body"><div class="teach-row"><div><span class="teach-course">LING-367: Computational Corpus Linguistics</span></div><div class="term">Fall 2021</div></div>
+      <div class="teach-row"><div><span class="teach-course">LING-001: Introduction to Language</span></div><div class="term">Fall 2020</div></div>
+      <div class="teach-row"><div><span class="teach-course">LING-469: Analyzing Language Data with R</span></div><div class="term">Springs 2019, 2020</div></div>
+      <div class="teach-row"><div><span class="teach-course">LING-462/COSC-482: Statistical Machine Translation</span></div><div class="term">Spring 2020</div></div>
+      <div class="teach-row"><div><span class="teach-course">LING-362: Introduction to Natural Language Processing</span></div><div class="term">Fall 2018</div></div></div>
       </details>
       <details class="fold teaching-group" >
         <summary class="fold-heading"><span class="fold-main"><span class="fold-title">Stony Brook University · Teaching Assistant · 2016–2017</span><span class="fold-count">2 courses</span></span></summary>
-        <div class="fold-body teaching-body"><div class="teach-row"><div><strong>LIN-230: Languages of the World</strong></div><div class="term">Spring 2017</div></div>
-      <div class="teach-row"><div><strong>LIN-200: Language in the U.S.</strong></div><div class="term">Fall 2016</div></div></div>
+        <div class="fold-body teaching-body"><div class="teach-row"><div><span class="teach-course">LIN-230: Languages of the World</span></div><div class="term">Spring 2017</div></div>
+      <div class="teach-row"><div><span class="teach-course">LIN-200: Language in the U.S.</span></div><div class="term">Fall 2016</div></div></div>
       </details>
     </section>
 
