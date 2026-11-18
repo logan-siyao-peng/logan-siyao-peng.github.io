@@ -41,7 +41,11 @@
   .profile-links button:focus-visible { outline:3px solid #8dbbe0; outline-offset:3px; }
   .site-nav { border-top:1px solid var(--border); padding-top:10px; padding-left:0; display:flex; flex-direction:column; gap:2px; }
   .site-nav a { display:block; padding:4px 0; font-size:15.5px; color:#4a5c6c; }
-  .site-nav a:hover { color:var(--blue); }
+  .site-nav a:hover { color:var(--blue); background:#f3f7fa; }
+  /* Scroll-aware section indicator: understated, accessible, and aligned with existing navigation. */
+  .site-nav a { padding:5px 11px; margin-left:-11px; border-left:3px solid transparent; border-radius:0 5px 5px 0; transition:background-color .15s ease,color .15s ease,border-color .15s ease; }
+  .site-nav a.active, .site-nav a[aria-current="location"] { color:var(--blue); background:#edf4fa; border-left-color:var(--blue); font-weight:600; }
+  @media (prefers-reduced-motion:reduce) { .site-nav a { transition:none; } }
   main { min-width:0; }
   section { margin:0 0 49px; scroll-margin-top:30px; }
   h1,h2,h3 { line-height:1.28; letter-spacing:-.02em; }
@@ -129,8 +133,8 @@
   .pub-empty { padding:18px 2px; color:var(--muted); font-size:14px; }
   .teaching-group .fold-body { padding-bottom:14px; }
   .teaching-group .teach-row:last-child { border-bottom:none; }
-  /* Publication-blue course names, intentionally not bold and not fake links. */
-  .teaching-body .teach-course { color:var(--blue); font-weight:400; }
+  /* Course names are plain text rather than links; retain normal weight and body color. */
+  .teaching-body .teach-course { color:var(--ink); font-weight:400; }
   .service-group .fold-title { font-size:15px; }
   .service-group .fold-body p { margin:0 0 8px; font-size:14.5px; }
   @media(max-width:520px) {
@@ -460,6 +464,38 @@
   clear.addEventListener('click', () => { search.value = ''; filterPapers(); search.focus(); });
   expand.addEventListener('click', () => groups.forEach(group => group.open = true));
   collapse.addEventListener('click', () => groups.forEach(group => group.open = false));
+})();
+</script>
+<script>
+/* Highlight the section currently being read, including after clicking navigation links. */
+(function () {
+  const links = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+  const sections = links.map(a => ({link:a, section:document.getElementById(a.hash.slice(1))})).filter(x => x.section);
+  if (!sections.length) return;
+  let pending = false;
+  function updateActive() {
+    pending = false;
+    // A reading line slightly below the top avoids switching too early at section boundaries.
+    const readLine = window.scrollY + Math.min(window.innerHeight * .27, 220);
+    let current = sections[0];
+    for (const item of sections) {
+      if (item.section.getBoundingClientRect().top + window.scrollY <= readLine) current = item;
+    }
+    // The final section remains selected when reaching the page bottom.
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) current = sections[sections.length - 1];
+    for (const item of sections) {
+      const active = item === current;
+      item.link.classList.toggle('active',active);
+      if(active) item.link.setAttribute('aria-current','location');
+      else item.link.removeAttribute('aria-current');
+    }
+  }
+  function schedule() { if(!pending){pending=true;requestAnimationFrame(updateActive);} }
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('hashchange',schedule);
+  links.forEach(x=>x.addEventListener('click',()=>{setTimeout(updateActive,100); }));
+  updateActive();
 })();
 </script>
 </body>

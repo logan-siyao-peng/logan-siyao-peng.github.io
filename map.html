@@ -81,6 +81,7 @@
 
   .map-space,.map-space svg{min-height:285px;}
 }
+.list-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:9px}.list-heading h2{margin:0}.sort-field{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);white-space:nowrap}.sort-field select{max-width:120px;min-width:0;padding:4px 7px;border:1px solid var(--line);border-radius:7px;background:#fff;color:#3e5369;font-size:11px}.sort-field select:focus-visible{outline:3px solid #9ac3ea;outline-offset:2px}
 </style>
 </head>
 <body>
@@ -398,7 +399,7 @@
     <div class="map-meta">City names appear beside markers · Click any city to explore</div>
   </section>
   <aside class="list-card" aria-label="Places and academic records">
-    <div class="list-top"><h2>Places &amp; milestones</h2><input id="search" class="search" type="search" aria-label="Search places and events" placeholder="Search a city, conference, or topic…" autocomplete="off"><p class="list-meta" id="result-meta">Loading entries…</p></div>
+    <div class="list-top"><div class="list-heading"><h2>Places &amp; milestones</h2><div class="sort-field"><label for="place-sort">Sort</label><select id="place-sort" aria-label="Sort cities"><option value="recent" selected>Most recent</option><option value="alphabetical">Alphabetical</option></select></div></div><input id="search" class="search" type="search" aria-label="Search places and events" placeholder="Search a city, conference, or topic…" autocomplete="off"><p class="list-meta" id="result-meta">Loading entries…</p></div>
     <div class="scrollarea" id="places-list" aria-label="Scrollable list of cities" aria-live="polite"></div>
   </aside>
   <aside class="detail-card" id="detail-panel" aria-label="Selected location details">
@@ -420,13 +421,13 @@ const TYPELABEL={education:'Education',employment:'Employment','conference-paper
 const svg=document.getElementById('worldmap'),mapspace=document.getElementById('map-space'),markerLayer=document.getElementById('markers');
 const mkNS='http://www.w3.org/2000/svg',WW=1200,HH=600;
 const DEFAULT_TYPES=['education','employment','conference-attended'];
-let activeTypes=new Set(DEFAULT_TYPES),minYear=1992,maxYear=2026,search='',selected=null,view={x:0,y:0,w:1200,h:600},drag=null;
+let activeTypes=new Set(DEFAULT_TYPES),minYear=1992,maxYear=2026,search='',selected=null,sortOrder='recent',view={x:0,y:0,w:1200,h:600},drag=null;
 const make=(tag,cls)=>{let el=document.createElementNS(mkNS,tag);if(cls)el.setAttribute('class',cls);return el;};
 const proj=(lon,lat)=>({x:(lon+180)*WW/360,y:(90-lat)*HH/180});
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function yearfmt(r){if(r.start==null||r.end==null)return 'Year to confirm';return r.start===r.end?String(r.start):r.start+'–'+r.end;}
 function visibleRecords(){return D.records.filter(r=>activeTypes.has(r.type)&&(r.start==null||r.end==null||(r.start<=maxYear&&r.end>=minYear))&&[r.title,r.detail,r.tag,r.place?D.places[r.place].name:'',r.place?D.places[r.place].country:''].some(s=>String(s).toLowerCase().includes(search)));}
-function groupRecords(rs){let groups={};rs.filter(r=>r.place).forEach(r=>(groups[r.place]??=[]).push(r));return Object.keys(groups).map(k=>({id:k,place:D.places[k],entries:groups[k].sort((a,b)=>b.end-a.end||b.start-a.start)})).sort((a,b)=>Math.max(...b.entries.map(r=>r.end))-Math.max(...a.entries.map(r=>r.end))||a.place.name.localeCompare(b.place.name));}
+function groupRecords(rs){let groups={};rs.filter(r=>r.place).forEach(r=>(groups[r.place]??=[]).push(r));let result=Object.keys(groups).map(k=>({id:k,place:D.places[k],entries:groups[k].sort((a,b)=>b.end-a.end||b.start-a.start)}));return result.sort((a,b)=>sortOrder==='alphabetical'?(a.place.name.localeCompare(b.place.name,'en',{sensitivity:'base'})||a.place.country.localeCompare(b.place.country,'en',{sensitivity:'base'})):(Math.max(...b.entries.map(r=>r.end))-Math.max(...a.entries.map(r=>r.end))||a.place.name.localeCompare(b.place.name)));}
 function updateView(){view.w=Math.min(1200,Math.max(95,view.w));view.h=view.w/2;view.x=Math.max(-30,Math.min(WW-view.w+30,view.x));view.y=Math.max(-15,Math.min(HH-view.h+15,view.y));svg.setAttribute('viewBox',[view.x,view.y,view.w,view.h].join(' '));markerLayer.querySelectorAll('.map-marker').forEach(g=>{let f=view.w/1200;let n=Number(g.dataset.n),rad=(n>=10?12:n>=3?11:9)*f;let c=g.querySelector('circle');c.setAttribute('r',rad);c.setAttribute('stroke-width',Math.max(1.15,2.8*f));let t=g.querySelector('.dot-count');if(t){t.setAttribute('font-size',(n>=10?12:11)*f);t.setAttribute('dy',.7*f);}});placeLabels();}
 
 
@@ -494,8 +495,9 @@ for(const b of document.querySelectorAll('.filter'))b.addEventListener('click',(
 for(let y=1992;y<=2026;y++){document.getElementById('year-min').add(new Option(y,y));document.getElementById('year-max').add(new Option(y,y));}document.getElementById('year-min').value='1992';document.getElementById('year-max').value='2026';
 document.getElementById('year-min').addEventListener('change',e=>{minYear=+e.target.value;if(minYear>maxYear){maxYear=minYear;document.getElementById('year-max').value=maxYear;}render();});document.getElementById('year-max').addEventListener('change',e=>{maxYear=+e.target.value;if(maxYear<minYear){minYear=maxYear;document.getElementById('year-min').value=minYear;}render();});
 document.getElementById('search').addEventListener('input',e=>{search=e.target.value.trim().toLowerCase();render();});
+document.getElementById('place-sort').addEventListener('change',e=>{sortOrder=e.target.value;render();document.getElementById('places-list').scrollTop=0;});
 document.getElementById('close-details').addEventListener('click',()=>{selected=null;render();});
-document.getElementById('reset').addEventListener('click',()=>{activeTypes=new Set(DEFAULT_TYPES);document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed',String(activeTypes.has(b.dataset.type))));minYear=1992;maxYear=2026;document.getElementById('year-min').value='1992';document.getElementById('year-max').value='2026';document.getElementById('search').value='';search='';selected=null;resetView();render();});
+document.getElementById('reset').addEventListener('click',()=>{activeTypes=new Set(DEFAULT_TYPES);document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed',String(activeTypes.has(b.dataset.type))));minYear=1992;maxYear=2026;document.getElementById('year-min').value='1992';document.getElementById('year-max').value='2026';document.getElementById('search').value='';search='';document.getElementById('place-sort').value='recent';sortOrder='recent';selected=null;resetView();render();document.getElementById('places-list').scrollTop=0;});
 document.getElementById('zoom-in').addEventListener('click',()=>zoom(1.65));document.getElementById('zoom-out').addEventListener('click',()=>zoom(1/1.65));document.getElementById('fit').addEventListener('click',resetView);
 svg.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.13:1/1.13,screenToMap(e.clientX,e.clientY));},{passive:false});
 svg.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('.map-marker'))return;let p=screenToMap(e.clientX,e.clientY);drag={x:e.clientX,y:e.clientY,originX:view.x,originY:view.y,scale:Math.min(svg.clientWidth/view.w,svg.clientHeight/view.h)};svg.setPointerCapture(e.pointerId);svg.classList.add('dragging');});
